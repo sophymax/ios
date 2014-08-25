@@ -1,0 +1,270 @@
+
+#user  nobody;
+worker_processes  1;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+worker_rlimit_nofile 65536;
+
+events {
+    use epoll;
+    worker_connections  65535;
+}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+	proxy_set_header  Host $host;
+	proxy_set_header  X-Real-IP $remote_addr;
+	proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
+    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+    #                  '$status $body_bytes_sent "$http_referer" '
+    #                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+    #access_log  logs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+    #gzip  on;
+    gzip  on;
+    gzip_min_length 1k;
+    gzip_buffers 16 64k;
+    gzip_http_version 1.1;
+    gzip_comp_level 9;
+    gzip_proxied any;
+    gzip_types text/plain application/x-javascript text/css application/xml;
+    gzip_vary on;
+    fastcgi_read_timeout 60s;
+
+#    header_filter_by_lua '
+#	ngx.header["Server"]="JBossWeb"
+#	ngx.header["X-Powered-By"]="Servlet/2.5 JSP/2.1"        
+#	';
+
+
+    server {
+        listen       80;
+        server_name  www.codezhai.com;
+
+	
+#        if ($http_user_agent ~* "python") {
+#                return 403;
+#        }
+#        if ($http_user_agent ~* "urllib") {
+#                return 403;
+#        }
+#        if ($http_user_agent ~* "LSSRocketCrawler") {
+#                return 403;
+#        }
+#        if ($http_user_agent ~* "ia_archiver") {
+#                return 403;
+#        }
+#        if ($http_user_agent ~* "java") {
+#                return 403;
+#        }
+#        if ($http_user_agent ~* "YisouSpider") {
+#                return 403;
+#        }
+#        if ($http_user_agent ~* "EasouSpider") {
+#                return 403;
+#        }
+#	if ($http_user_agent ~* "nutch") {
+#                return 403;
+#        }
+
+        #charset koi8-r;
+
+#        access_log  logs/host.access.log  main;
+	server_name_in_redirect off;
+	root /usr/local/openresty/nginx/html/codezhai;
+
+	#if (-f $request_filename/index.html){rewrite (.) $1/index.html break;}
+	#if (-f $request_filename/index.php){rewrite (.) $1/index.php;}
+	#if (!-f $request_filename){rewrite (.) /index.php;}
+	#rewrite /wp-admin$ $scheme://$host$uri/ permanent;
+	
+	
+
+
+	index index.php index.html;
+
+   	location ~ \.php$ {
+
+
+
+#		autoindex off;
+
+		set $wp_super_cache_file '';
+		set $wp_super_cache_uri $request_uri;
+		if ( $request_method = POST )
+		{
+			set $wp_super_cache_uri '';
+		}
+		if ( $query_string )
+		{
+			set $wp_super_cache_uri '';
+		}
+		if ( $http_cookie ~* "comment_author_|WordPress|wp-postpass_" )
+		{
+			set $wp_super_cache_uri '';
+		}
+		if ( $wp_super_cache_uri ~ ^(.+)$ )
+		{
+			set $wp_super_cache_file /wp-content/cache/wp_super_cache/$http_host/$1index.html;
+		}
+		if ( -f $document_root$wp_super_cache_file )
+		{
+			rewrite ^(.*)$ $wp_super_cache_file break;
+		}
+		if (-f $request_filename)
+		{
+			expires 30d;
+			break;
+		}
+		if (!-e $request_filename)
+		{
+			rewrite ^(.+)$ /index.php?q=$1 last;
+
+		}
+
+
+
+
+        	fastcgi_pass 127.0.0.1:9000;
+        	fastcgi_index index.php;
+        	fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        	include fastcgi_params;
+        }
+ 
+        location ~* ^.+\.(mp3|mp4|ttf|rss|jpg|jpeg|gif|png|ico|zip|tgz|gz|rar|bz2|doc|xls|exe|ppt|tar|mid|midi|wav|bmp|rtf)$ {
+	access_log off;
+        log_not_found off;
+        expires 1d;
+		}
+ 
+        location / {
+        	try_files $uri $uri/ /index.php?q=$uri&$args;
+	}
+
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html/err;
+        }
+
+    }
+
+
+
+
+ server {
+        listen       80;
+        server_name  www.acgzhai.net;
+
+
+
+        #charset koi8-r;
+
+#        access_log  logs/host.access.log  main;
+	server_name_in_redirect off;
+	root /usr/local/openresty/nginx/html/acgzhai;
+
+	index index.html index.php;
+
+   location ~ \.php$ {
+
+        fastcgi_pass 127.0.0.1:9000;
+        fastcgi_index index.php;
+        fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+        }
+ 
+        location ~* ^.+\.(mp3|mp4|ttf|rss|jpg|jpeg|gif|png|ico|zip|tgz|gz|rar|bz2|doc|xls|exe|ppt|tar|mid|midi|wav|bmp|rtf)$ {
+	access_log off;
+        log_not_found off;
+        expires 1d;
+		}
+ 
+        location / {
+        #	try_files $uri $uri/ /index.php?q=$uri&$args;
+	}
+	location /search/{
+		proxy_pass http://106.185.24.245:8983/solr/collection1/;
+		proxy_redirect default ;
+	}
+	location /select{
+		charset utf-8;
+		default_type text/html;
+		content_by_lua "
+			local res=ngx.location.capture('/search/select?'..ngx.var.args)
+			local cjson=require 'cjson'
+			local data=cjson.decode(res.body)
+			ngx.say('<input type=text style=\"width:30%;height:35px;\" id=\"box\">')
+			ngx.say('<script>document.onkeydown=function(event){var e = event ? event :(window.event ? window.event : null);if(e&&e.keyCode==13){window.location.href=\"http://www.acgzhai.net/select?q=\"+document.getElementById(\"box\").value+\"&wt=json&indent=true\";}}</script><p>')
+			if data.response==nil then ngx.exit(200) end
+			for i=1,10,1 do
+				if data.response.docs[i]==nil then
+					break
+				end
+				local endp=''
+
+				local tab={}
+				--ngx.say(string.byte(data.response.docs[i].content,400))
+				for uchar in string.gfind(data.response.docs[i].content, '[%z\1-\127\194-\244][\128-\191]*') do tab[#tab+1] = uchar end
+				 	for j=1,200,1 do
+						if tab[j]~=nil then
+							endp=endp..tab[j]	
+						end
+					end	
+				--if string.byte(data.response.docs[i].content,400)>127 then
+				--	endp=399
+				--else
+				--	endp=400
+				--end
+				--	ngx.say('<a href=\"'..data.response.docs[i].url..'\">'..data.response.docs[i].title..'</a><br>'..data.response.docs[i].url..'<br>'..string.sub(data.response.docs[i].content,0,endp)..'<br><p>')			
+				 ngx.say('<div style=\"width:50%\"><a href=\"'..data.response.docs[i].url..'\">'..data.response.docs[i].title..'</a><br>'..data.response.docs[i].url..'<br>'..endp..'<br><p></div>')
+			end
+			
+		";
+	}
+
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html/err;
+        }
+
+
+    }
+
+
+
+
+    # HTTPS server
+    #
+    #server {
+    #    listen       443 ssl;
+    #    server_name  localhost;
+
+    #    ssl_certificate      cert.pem;
+    #    ssl_certificate_key  cert.key;
+
+    #    ssl_session_cache    shared:SSL:1m;
+    #    ssl_session_timeout  5m;
+
+    #    ssl_ciphers  HIGH:!aNULL:!MD5;
+    #    ssl_prefer_server_ciphers  on;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+}

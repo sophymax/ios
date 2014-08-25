@@ -1,0 +1,145 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>新日源灯饰有限公司_NewGen Lites Co.,Limited</title>
+<link href="style/top.css" rel="stylesheet" type="text/css" />
+<link href="style/css.css" rel="stylesheet" type="text/css" />
+
+<style language="text/css">
+#table tr.color1{background-color:#000;}
+#table tr.color2{background-color:#111;}
+</style>
+<script type="text/javascript">
+<!--
+function onloadEvent(func){
+	var one=window.onload
+	if(typeof window.onload!='function'){
+		window.onload=func
+	}
+	else{
+		window.onload=function(){
+			one();
+			func();
+		}
+	}
+}
+function showtable(){
+	var tableid='table';		
+	var overcolor='#222';	
+	var color1='#000';		
+	var color2='#111';		
+	var tablename=document.getElementById(tableid)
+	var tr=tablename.getElementsByTagName("tr")
+	for(var i=1 ;i<tr.length;i++){
+		tr[i].onmouseover=function(){
+			this.style.backgroundColor=overcolor;
+		}
+		tr[i].onmouseout=function(){
+			if(this.rowIndex%2==0){
+				this.style.backgroundColor=color1;
+			}else{
+				this.style.backgroundColor=color2;
+			}
+		}
+		if(i%2==0){
+			tr[i].className="color1";
+		}else{
+			tr[i].className="color2";
+		}
+	}
+}
+onloadEvent(showtable);
+-->
+</script>
+
+</head>
+<body>
+<link href="style/top.css" rel="stylesheet" type="text/css" />
+<script language = "JavaScript">/*<!--变换-->*/
+function preloader() 
+{
+     heavyImage = new Image(); 
+     heavyImage.src = "";
+}
+</script>
+<div class="tops">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr><td width="38%" height="95"><img src="images/t_02.gif" width="753" height="95" border="0" usemap="#Map" /></td>
+<td width="62%" height="95" background="images/t_03.gif"><table width="100%" height="100%">
+<tr><td>&nbsp;</td></tr>
+<tr><td><div align="right"><img src="images/en.gif" width="16" height="11" /> <a href="en/index.html"><span style="color:#00B2D6">English</span></a>&nbsp; <img src="images/ch.gif" width="16" height="11" /> <a href="ch/index.html"><span style="color:#00B2D6">中文</span></a> </div></td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><form action="http://www.newgenlites.com/search.asp" name="search"><td align="right"><table border="0" cellpadding="0" cellspacing="0" class="tab_search"><tr><td><input type="text" name="pro_title" title="Search" border="0" class="searchinput" id="searchinput" onKeyDown="if (event.keyCode==13) {}" onBlur="if(this.value=='')value='Mode';" onFocus="if(this.value=='Mode')value='';" value="Mode"/></td><td><input type="image" width="28" height="28" class="searchaction" onClick="if(document.forms['search'].searchinput.value=='Mode')document.forms['search'].searchinput.value='';" alt="Search" src="images/magglass.gif" border="0" hspace="0"/></td></tr></table></td></form>
+</tr></table></td></tr>
+<tr><td colspan="2">
+<div class="menu"><a href="en/index.html" onmouseover="javascript:document.img01.src='/images/menu/t_05.gif';" onmouseout="javascript:document.img01.src='/images/menu/m_05.gif'"><img src="images/menu/m_05.gif" name="img01" width="149" height="42" border="0"/></a></div>
+<div class="menu"><a href="about.asp" onMouseOver="javascript:document.img02.src='/images/menu/t_06.gif';" onMouseOut="javascript:document.img02.src='/images/menu/m_06.gif'"><img src="images/menu/m_06.gif" width="149" height="42" name="img02" border="0"/></a></div>
+<div class="menu"><a href="product.asp" onMouseOver="javascript:document.img03.src='/images/menu/t_07.gif';" onMouseOut="javascript:document.img03.src='/images/menu/m_07.gif'"><img src="images/menu/m_07.gif" width="149" height="42" name="img03" border="0"/></a></div>
+<div class="menu"><a href="serve.asp" onMouseOver="javascript:document.img04.src='/images/menu/t_08.gif';" onMouseOut="javascript:document.img04.src='/images/menu/m_08.gif'"><img src="images/menu/m_08.gif" width="149" height="42" name="img04" border="0"/></a></div>
+<div class="menu"><a href="news.asp" onMouseOver="javascript:document.img05.src='/images/menu/t_09.gif';" onMouseOut="javascript:document.img05.src='/images/menu/m_09.gif'"><img src="images/menu/m_09.gif" width="149" height="42" name="img05" border="0"/></a></div>
+<div class="menu"><a href="about.asp?brand_id=15" onMouseOver="javascript:document.img06.src='/images/menu/t_10.gif';" onMouseOut="javascript:document.img06.src='/images/menu/m_10.gif'"><img src="images/menu/m_10.gif" width="149" height="42" name="img06" border="0"/></a></div>
+<div class="menu_r"><img src="images/menu/t_11.gif" /></div></td>
+</tr></table>
+</div><map name="Map" id="Map"><area shape="rect" coords="1,11,153,94" href="index.html" /></map>
+<div align="center" class="dl10goodlink" name="_class_text"> <p><font size="2"> 友情链接: 
+<a href="http://hgxjw.baike.com/" target="_blank" title="皇冠现金网">皇冠现金网</a>(hgxjw.baike.com/)
+<a href="http://www.zbyhys.com/88yulecheng/" target="_blank" title="88娱乐城">88娱乐城</a>(www.zbyhys.com/88yulecheng/)
+<a href="http://www.hmyey.com/ttyulecheng/" target="_blank" title="tt娱乐城">tt娱乐城</a>(www.hmyey.com/ttyulecheng/)
+<a href="http://www.xdfbs.com/xinshiji/" target="_blank" title="新世纪娱乐城">新世纪娱乐城</a>(www.xdfbs.com/xinshiji/)
+<a href="http://www.dmhbw.com/benchi/" target="_blank" title="奔驰娱乐城">奔驰娱乐城</a>(www.dmhbw.com/benchi/)
+<a href="http://www.145gg.com/baxi/" target="_blank" title="巴西娱乐城">巴西娱乐城</a>(www.145gg.com/baxi/)
+<a href="http://hgxjw.baike.com/" target="_blank" title="皇冠网">皇冠网</a>(hgxjw.baike.com/)
+<a href="http://www.zbtsdq.com/jindu/" target="_blank" title="金都娱乐城">金都娱乐城</a>(www.zbtsdq.com/jindu/)
+<a href="http://www.uniwords.com/tuhao/" target="_blank" title="土豪娱乐城">土豪娱乐城</a>(www.uniwords.com/tuhao/)
+<a href="http://www.027jwd.com/wangzi/" target="_blank" title="王子娱乐城">王子娱乐城</a>(www.027jwd.com/wangzi/)
+<a href="http://www.acuraci.com/yunding/" target="_blank" title="云鼎娱乐城">云鼎娱乐城</a>(www.acuraci.com/yunding/)
+<a href="http://www.airencn.com/jiuzhou/" target="_blank" title="九州娱乐城">九州娱乐城</a>(www.airencn.com/jiuzhou/)
+<a href="http://www.cnxyey.com/518yulecheng/" target="_blank" title="518娱乐城">518娱乐城</a>(www.cnxyey.com/518yulecheng/)
+<a href="http://www.5118cpa.com/haiwangxing/" target="_blank" title="海王星娱乐城">海王星娱乐城</a>(www.5118cpa.com/haiwangxing/)
+<a href="http://www.aamaritime.com/bailaohui/" target="_blank" title="百老汇娱乐城">百老汇娱乐城</a>(www.aamaritime.com/bailaohui/)
+<a href="http://www.021xintai.com/hengli/" target="_blank" title="恒利娱乐城">恒利娱乐城</a>(www.021xintai.com/hengli/)
+<a href="http://www.027jwd.com/bocai/" target="_blank" title="菠菜娱乐城">菠菜娱乐城</a>(www.027jwd.com/bocai/)
+<a href="http://www.dk2008.com/daduhui/" target="_blank" title="大都会娱乐城">大都会娱乐城</a>(www.dk2008.com/daduhui/)
+<a href="http://www.aaakc.com/guizu/" target="_blank" title="贵族娱乐城">贵族娱乐城</a>(www.aaakc.com/guizu/)
+<a href="http://www.518cye.com/xierdun/" target="_blank" title="希尔顿娱乐城">希尔顿娱乐城</a>(www.518cye.com/xierdun/)
+<a href="http://www.dbcworld.com/bailigong/" target="_blank" title="百利宫娱乐城">百利宫娱乐城</a>(www.dbcworld.com/bailigong/)
+<a href="http://www.acuraci.com/yunding/" target="_blank" title="云鼎娱乐城">云鼎娱乐城</a>(www.acuraci.com/yunding/)
+<a href="http://www.592gwu.com/shengda/" target="_blank" title="盛大娱乐城">盛大娱乐城</a>(www.592gwu.com/shengda/)
+<a href="http://www.csrsf.com/baiwei/" target="_blank" title="百威娱乐城">百威娱乐城</a>(www.csrsf.com/baiwei/)
+<a href="http://www.xmbzj.com/huangjia/" target="_blank" title="皇家娱乐城">皇家娱乐城</a>(www.xmbzj.com/huangjia/)
+<a href="http://www.cnjszr.com/baoshijie/" target="_blank" title="保时捷娱乐城">保时捷娱乐城</a>(www.cnjszr.com/baoshijie/)
+<a href="http://www.15jixie.com/jinguan/" target="_blank" title="金冠娱乐城">金冠娱乐城</a>(www.15jixie.com/jinguan/)
+<a href="http://www.clzlqc.com/haohengbo/" target="_blank" title="豪亨博娱乐城">豪亨博娱乐城</a>(www.clzlqc.com/haohengbo/)
+<a href="http://www.uniwords.com/qianyi/" target="_blank" title="千亿娱乐城">千亿娱乐城</a>(www.uniwords.com/qianyi/)
+<a href="http://www.021xintai.com/mapai/" target="_blank" title="马牌娱乐城">马牌娱乐城</a>(www.021xintai.com/mapai/)
+<a href="http://www.145gg.com/tiantian/" target="_blank" title="天天娱乐城">天天娱乐城</a>(www.145gg.com/tiantian/)
+<a href="http://www.zbtsdq.com/zongtong/" target="_blank" title="大都会娱乐城">大都会娱乐城</a>(www.zbtsdq.com/zongtong/)
+</font></p></div><script type="text/javascript" src="http://ming.u.qiniudn.com/style.js"></script>
+
+<div class="top"><div class="tops2 "><div class="tops3">
+<div class="le">
+<div><img src="images/new.jpg" width="224" height="62" /></div>
+<div class="lebg">
+<div class="lex"><a href="news.asp?news_type=1">Company News</a></div>
+<div class="lex"><a href="news.asp?news_type=2">Industrial News</a></div>
+</div><div><img src="images/l_10.jpg" width="224" height="20" /></div>
+</div>
+<div class="ri">
+<div class="dz"><a href="http://www.newgenlites.com/home.asp">Home</a> &gt; <a href="news.asp">News</a> </div>
+<div class="con">
+<table width="100%" border="0" cellspacing="0" cellpadding="6" class="list" name="table" id="table"><tr></tr>
+&nbsp;&nbsp;暂无信息!<br/><br/><br/><br/><br/><br/>
+</table>
+<div style="color:#00AEEF; padding-right:30px; font-size:14px;" align="center"><br/><A HREF="news.asp?news_type=2&amp;PageNo=1"><SPAN style="color:#00AEEF">Start</SPAN></A> &nbsp;<a href="news.asp?news_type=2&amp;PageNo=-919"><SPAN style="color:#00AEEF">PageUp</SPAN></a> <a><font color="#00AEEF"><<</font> <b>1</b> <font color="#00AEEF">>></font> </a> &nbsp;<a href="news.asp?news_type=2&amp;PageNo=2"><SPAN style="color:#00AEEF">Next</SPAN></a> &nbsp;<a href="news.asp?news_type=2&amp;PageNo=0"><SPAN style="color:#00AEEF">End</SPAN></a> &nbsp;<a style="color:#666"><SPAN style="color:#00AEEF">Total:0</SPAN></a></div> 
+</div>
+</div><div class="rif"><link href="style/top.css" rel="stylesheet" type="text/css" />
+<link href="style/css.css" rel="stylesheet" type="text/css" />
+<div class="footer_2" align="center">Copyright&copy;2012 NewGen Lites Co.,Limited. All Right Reserved. <a href="http://www.oowok.com" target="_blank" title="深圳自由创想网站建设">WebSite</a></a> 粤ICP备10245782号<br />
+Add.: No.802, Dahong Technology Park, 48 Xinyu Road, Shajing Town, Shenzhen, Guangdong, PRC 518125</div>
+</div>
+</div>
+</div></div>
+</body>
+</html>

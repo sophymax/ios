@@ -1,0 +1,40 @@
+/*编辑器内容 可视化添加*/
+body{color: #333;font: 14px/1.8em "Trebuchet MS",Helvetica,"Microsoft YaHei",Georgia,sans-serif;}
+p{margin:0.6em 0;text-shadow: 0 -1px 0 #FAFAFA;overflow: hidden;}
+img{max-width:660px;border: 1px solid #f5f5f5;height: auto;width: expression(this.width>660?"660":this.width+"px");}
+img:hover{border: 1px solid #f3f3f3;-webkit-box-shadow: 0 0 7px #999;-moz-box-shadow: 0 0 7px #999;box-shadow: 0 0 7px #999;}
+#gallery-1 img {border: 1px solid #f5f5f5;}
+a{color:#444;}
+a:hover{color: #2A609F;}
+img.wp-smiley:hover{-webkit-box-shadow: 0 0 0 #fff;-moz-box-shadow: 0 0 0 #fff;box-shadow: 0 0 0 #fff;}
+ul,.post .content ol{ overflow-x: auto;overflow-y: hidden;width: 634px;padding: 0 0 10px 2em;margin-bottom: 14px;white-space: nowrap;font-family: Consolas,Courier,monospace !important;}
+ul{list-style: square;}
+ol{list-style: decimal;}
+blockquote{font-family: Consolas,Courier,monospace !important;color: #666;width: 640px;padding: 1px 10px;font-size: 12px;margin: 0 0 14px 0;border: 1px solid;border-color: #c5c5c5 #e5e5e5 #e5e5e5 #c5c5c5;background: #fafafa;}
+pre{overflow-x: auto;overflow-y: hidden;width: 660px;line-height: 1.333;font-size: 12px;font-family: Consolas,Courier,monospace !important;}
+h1,h2,h3,h4,h5,h6 {background: #fcfcfc;padding-left: 14px;line-height: 2.0em;margin-bottom: 14px;color: #000;border-bottom: 1px solid #CCC;border-top: 1px solid #CCC;}
+h1{font-size:22px;}
+h2{font-size:20px;}
+h3{font-size:18px;}
+h4{font-size:16px;}
+h5{font-size:14px;}
+h6{font-size:12px;}
+embed{width: 660px;height:400px;}
+hr{border:0;border-top: 1px solid #ccc;border-bottom: 1px solid #fff;position: relative;left: -14px;width: 690px;}
+
+
+.warning,.accepted,.cancel,.arrow,.download{text-shadow: 0 0 0;margin:0.8em 0;padding: 10px 0px 10px 50px;border: 1px solid;-moz-border-radius: 5px;-khtml-border-radius: 5px;-webkit-border-radius:5px;border-radius:5px;}
+.warning p,.accepted  p,.cancel  p,.arrow  p,.download  p{padding:0;margin:0;text-shadow: 0 0 0;}
+.warning{color: #c05d00;background: #FFEF9B url(../../../../image/flag/warning.png) 11px 13px no-repeat;border-color: #E59002;}
+.accepted{color: #348105;background: #c0f16a url(../../../../image/flag/accepted.png) 11px 13px no-repeat;border-color: #369600;}
+.cancel{color: #980000;background: #e78e68 url(../../../../image/flag/cancel.png) 11px 13px no-repeat;border-color: #c5390a;}
+.arrow{color: #116fa6;background: #a1d9ea url(../../../../image/flag/arrow.png) 11px 13px no-repeat;border-color: #2d99c9;}
+.download{color: #96764c;background: #e2c696 url(../../../../image/flag/download.png) 11px 13px no-repeat;border-color: #b08e5e;}
+
+.down {margin:0 0 12px 0; font-size:14px;overflow: hidden;}
+.down a{ float:left;display:block;background:#fff url(../../../../image/button/download.png) no-repeat left top;border:none;padding:0 0 0 15px;height:35px;color:#555555;text-decoration:none;text-shadow:0 1px 0 #f1f1f1;}
+.down a span{float:left;display:block;background:#fff url(../../../../image/button/download.png) no-repeat right top;padding:0 15px 0 0;line-height:30px;cursor:pointer;}
+.down a:hover{ text-shadow:0 1px 1px #fff;background:#fff url(../../../../image/button/download.png) no-repeat left -41px;}
+.down a:hover span{background:#fff url(../../../../image/button/download.png) no-repeat right -41px;}
+.down a:active{background:#fff url(../../../../image/button/download.png) no-repeat left -82px;}
+.down a:active span{background:#fff url(../../../../image/button/download.png) no-repeat right -82px;}

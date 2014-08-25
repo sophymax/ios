@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="description" content="ACG宅-蠢萌的动漫游戏搜索引擎" />
+<meta name="keywords" content="ACG宅,动漫,游戏,搜索引擎,动画,漫画,死宅,ACG文化,DOTA,LOL,MAD,V家,东方,二次元,作死 ,喵星人,漫友,新番,英雄联盟,鬼畜" />
+<title>ACG宅-蠢萌的动漫游戏搜索引擎</title>
+</head>
+<body>
+<div style="width:500px;margin-left: auto; margin-right: auto;text-align:center; padding-top:120px;">
+<img src="logo.png"\>
+<div style="margin-top:20px">
+<input type=text style="width:100%;height:25px;" id="box">
+<div style="padding-top:10px;">
+<img src="btn-ac.png" style="width:0px;height:0px;">
+<div id="submit" style="margin-left: auto; margin-right: auto;background:url('btn.png') no-repeat;width:144px;height:46px;cursor:pointer;" onmouseover="over();" onmouseout="out();" onclick="search('mouse');">
+</div>
+</div>
+</div>
+<script>
+document.onkeydown=search;
+function over(){
+	document.getElementById("submit").style="margin-left: auto; margin-right: auto;background:url('btn-ac.png') no-repeat;width:144px;height:46px;cursor:pointer;";
+}
+function out(){
+	document.getElementById("submit").style="margin-left: auto; margin-right: auto;background:url('btn.png') no-repeat;width:144px;height:46px;cursor:pointer;";
+}
+function search(event){
+	var e = event ? event :(window.event ? window.event : null); 
+        if((event=='mouse')||(e&&e.keyCode==13)){ 
+ 	window.location.href="http://www.acgzhai.net/search/select?q="+document.getElementById("box").value+"&wt=json&indent=true"; 
+	}
+}
+</script>
+</body>
+</html>

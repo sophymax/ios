@@ -1,0 +1,29 @@
+User-agent: *
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /wp-content/plugins
+Disallow: /wp-content/themes
+Disallow: /wp-content/uploads
+Disallow: /feed
+Disallow: /articles/*/feed
+Disallow: /tech/*/feed
+Disallow: /code/*/feed
+Disallow: /tag/*/feed
+Disallow: /author/
+Disallow: /Forums/
+Disallow: /*?replytocom=
+Disallow: /trackback
+Disallow: /jiecao/ 
+Disallow: /wp-
+Disallow: /feed/
+Disallow: /comments/feed
+Disallow: /trackback/
+
+
+User-agent: MJ12bot
+Disallow: /
+
+
+
+
+Sitemap: http://www.codezhai.com/sitemap_baidu.xml

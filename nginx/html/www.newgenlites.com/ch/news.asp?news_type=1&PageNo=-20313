@@ -1,0 +1,110 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>新日源灯饰有限公司_NewGen Lites Co.,Limited</title>
+<link href="style/top.css" rel="stylesheet" type="text/css" />
+<link href="style/css.css" rel="stylesheet" type="text/css" />
+
+<style language="text/css">
+#table tr.color1{background-color:#000;}
+#table tr.color2{background-color:#111;}
+</style>
+<script type="text/javascript">
+<!--
+function onloadEvent(func){
+	var one=window.onload
+	if(typeof window.onload!='function'){
+		window.onload=func
+	}
+	else{
+		window.onload=function(){
+			one();
+			func();
+		}
+	}
+}
+function showtable(){
+	var tableid='table';		
+	var overcolor='#222';	
+	var color1='#000';		
+	var color2='#111';		
+	var tablename=document.getElementById(tableid)
+	var tr=tablename.getElementsByTagName("tr")
+	for(var i=1 ;i<tr.length;i++){
+		tr[i].onmouseover=function(){
+			this.style.backgroundColor=overcolor;
+		}
+		tr[i].onmouseout=function(){
+			if(this.rowIndex%2==0){
+				this.style.backgroundColor=color1;
+			}else{
+				this.style.backgroundColor=color2;
+			}
+		}
+		if(i%2==0){
+			tr[i].className="color1";
+		}else{
+			tr[i].className="color2";
+		}
+	}
+}
+onloadEvent(showtable);
+-->
+</script>
+
+</head>
+<body>
+<link href="style/top.css" rel="stylesheet" type="text/css" />
+<script language = "JavaScript">/*<!--变换-->*/
+function preloader() 
+{
+     heavyImage = new Image(); 
+     heavyImage.src = "";
+}
+</script>
+<div class="tops">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr><td width="38%" height="95"><img src="images/t_02.gif" width="753" height="95" border="0" usemap="#Map" /></td>
+<td width="62%" height="95" background="../images/t_03.gif"><table width="100%" height="100%">
+<tr><td>&nbsp;</td></tr>
+<tr><td><div align="right"><img src="images/en.gif" width="16" height="11" /> <a href="../en/index.html"><span style="color:#00B2D6">English</span></a>&nbsp; <img src="images/ch.gif" width="16" height="11" /> <a href="index.html"><span style="color:#00B2D6">中文</span></a> </div></td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><form action="http://www.newgenlites.com/ch/search.asp" name="search"><td align="right"><table border="0" cellpadding="0" cellspacing="0" class="tab_search"><tr><td><input type="text" name="pro_title" title="Search" border="0" class="searchinput" id="searchinput" onKeyDown="if (event.keyCode==13) {}" onBlur="if(this.value=='')value='产品名称';" onFocus="if(this.value=='产品名称')value='';" value="产品名称"/></td><td><input type="image" width="28" height="28" class="searchaction" onClick="if(document.forms['search'].searchinput.value=='产品名称')document.forms['search'].searchinput.value='';" alt="Search" src="../images/magglass.gif" border="0" hspace="0"/></td></tr></table></td></form>
+</tr></table></td></tr>
+<tr><td colspan="2">
+<div class="menu"><a href="index.html" onmouseover="javascript:document.img01.src='images/menu/t_05.gif';" onmouseout="javascript:document.img01.src='images/menu/m_05.gif'"><img src="images/menu/m_05.gif" name="img01" width="149" height="42" border="0"/></a></div>
+<div class="menu"><a href="about.asp" onMouseOver="javascript:document.img02.src='images/menu/t_06.gif';" onMouseOut="javascript:document.img02.src='images/menu/m_06.gif'"><img src="images/menu/m_06.gif" width="149" height="42" name="img02" border="0"/></a></div>
+<div class="menu"><a href="product.asp" onMouseOver="javascript:document.img03.src='images/menu/t_07.gif';" onMouseOut="javascript:document.img03.src='images/menu/m_07.gif'"><img src="images/menu/m_07.gif" width="149" height="42" name="img03" border="0"/></a></div>
+<div class="menu"><a href="serve.asp" onMouseOver="javascript:document.img04.src='images/menu/t_08.gif';" onMouseOut="javascript:document.img04.src='images/menu/m_08.gif'"><img src="images/menu/m_08.gif" width="149" height="42" name="img04" border="0"/></a></div>
+<div class="menu"><a href="news.asp" onMouseOver="javascript:document.img05.src='images/menu/t_09.gif';" onMouseOut="javascript:document.img05.src='images/menu/m_09.gif'"><img src="images/menu/m_09.gif" width="149" height="42" name="img05" border="0"/></a></div>
+<div class="menu"><a href="about.asp?brand_id=6" onMouseOver="javascript:document.img06.src='images/menu/t_10.gif';" onMouseOut="javascript:document.img06.src='images/menu/m_10.gif'"><img src="images/menu/m_10.gif" width="149" height="42" name="img06" border="0"/></a></div>
+<div class="menu_r"><img src="images/menu/t_11.gif" /></div></td>
+</tr></table>
+</div><map name="Map" id="Map"><area shape="rect" coords="1,11,153,94" href="../index.html" /></map>
+<div class="top"><div class="tops2 "><div class="tops3">
+<div class="le">
+<div><img src="images/new.jpg" width="224" height="62" /></div>
+<div class="lebg">
+<div class="lex"><a href="news.asp?news_type=1">公司新闻</a></div>
+<div class="lex"><a href="news.asp?news_type=2">媒体报道</a></div>
+</div><div><img src="images/l_10.jpg" width="224" height="20" /></div>
+</div>
+<div class="ri">
+<div class="dz"><a href="http://www.newgenlites.com/ch/home.asp">首 页</a> &gt; <a href="news.asp">新闻资讯</a> </div>
+<div class="con">
+<table width="100%" border="0" cellspacing="0" cellpadding="6" class="list" name="table" id="table"><tr></tr>
+&nbsp;&nbsp;暂无信息!<br/><br/><br/><br/><br/><br/>
+</table>
+<div style="color:#00AEEF; padding-right:30px; font-size:12px;" align="center"><br/><A HREF="news.asp?news_type=1&amp;PageNo=1"><SPAN style="color:#00AEEF">首页</SPAN></A> &nbsp;<a href="news.asp?news_type=1&amp;PageNo=-20314"><SPAN style="color:#00AEEF">上一页</SPAN></a> <a><font color="#00AEEF"><<</font> <b>1</b> <font color="#00AEEF">>></font> </a> &nbsp;<a href="news.asp?news_type=1&amp;PageNo=2"><SPAN style="color:#00AEEF">下一页</SPAN></a> &nbsp;<a href="news.asp?news_type=1&amp;PageNo=0"><SPAN style="color:#00AEEF">末页</SPAN></a> &nbsp;<a style="color:#666"><SPAN style="color:#00AEEF">共:0</SPAN></a></div> 
+</div>
+</div><div class="rif"><link href="style/top.css" rel="stylesheet" type="text/css" />
+<link href="style/css.css" rel="stylesheet" type="text/css" />
+<div class="footer_2" align="center">Copyright&copy;2012 新日源灯饰有限公司. All Right Reserved. <a href="http://www.oowok.com" target="_blank" title="深圳自由创想网站建设">WebSite</a></a> 粤ICP备10245782号<br />
+地址：广东省深圳市宝安区沙井镇新玉路48号大宏科技园802 邮编：518125</div>
+</div>
+</div>
+</div></div>
+</body>
+</html>

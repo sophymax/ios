@@ -1,0 +1,81 @@
+UL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+OL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+LI {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+IMG { border:0;}
+.picshow {
+	MARGIN: 0px auto;
+	WIDTH: 710px;
+	HEIGHT: 430px;
+	border: 1px solid #00236C;clear:both;
+}
+#picarea {
+	MARGIN: 0px auto; WIDTH: 710px; HEIGHT: 430px
+}
+#bigpicarea {
+	POSITION: relative; MARGIN: 0px auto; WIDTH: 771px; HEIGHT: 482px; OVERFLOW: hidden
+}
+.image {
+	TEXT-ALIGN: center
+}
+.image IMG {
+	MARGIN: 0px auto;
+}
+#bigpicarea .word {
+	TEXT-ALIGN: center; HEIGHT: 50px; COLOR: #990000}
+#bigpicarea .word H3 {
+	TEXT-ALIGN: center; LINE-HEIGHT: 48px; HEIGHT: 48px; COLOR: #990000; FONT-SIZE: 14px
+}
+#bigpicarea .ui-els-hide {
+	DISPLAY: none
+}
+#thumbs {
+	LIST-STYLE-TYPE: none;
+	WIDTH: 710px;
+	HEIGHT: 110px;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+}
+* HTML #thumbs {
+	HEIGHT: 100%
+}
+#thumbs LI {
+	MARGIN: 0px 7px; WIDTH: 110px; DISPLAY: inline; FLOAT: left; HEIGHT: 62px
+}
+#thumbs UL {
+	MARGIN-TOP: 3px
+}
+#thumbs LI.last_img {
+	MARGIN-RIGHT: 4px
+}
+#thumbs LI.first {
+	MARGIN: 50px 10px 0px 15px; WIDTH: 9px; HEIGHT: 16px; CURSOR: pointer
+}
+#thumbs LI.last {
+	MARGIN: 50px 10px 0px 15px; WIDTH: 9px; HEIGHT: 16px; CURSOR: pointer
+}
+#thumbs LI A {
+	BORDER-BOTTOM: #014A81 2px solid; BORDER-LEFT: #014A81 2px solid; WIDTH: 110px; DISPLAY: block; FONT-SIZE: 0px; BORDER-TOP: #014A81 2px solid; BORDER-RIGHT: #014A81 2px solid
+}
+#thumbs LI A:hover {
+	BORDER-BOTTOM: #819BBD 2px solid; BORDER-LEFT: #819BBD 2px solid; BORDER-TOP: #819BBD 2px solid; BORDER-RIGHT: #819BBD 2px solid
+}
+#thumbs LI A.current {
+	BORDER-BOTTOM: #f8ae0f 2px solid; BORDER-LEFT: #f8ae0f 2px solid; BORDER-TOP: #f8ae0f 2px solid; BORDER-RIGHT: #f8ae0f 2px solid
+}
+.bigbtnPrev {
+	Z-INDEX: 100; POSITION: absolute; WIDTH: 35px; HEIGHT: 51px; TOP: 120px; CURSOR: pointer; LEFT: 30px
+}
+.bigbtnNext {
+	Z-INDEX: 100; POSITION: absolute; WIDTH: 35px; HEIGHT: 51px; TOP: 120px; CURSOR: pointer; RIGHT: 30px
+}
+#smallpicarea {
+	MARGIN: 0px auto; WIDTH: 710px; PADDING-TOP: 20px
+}

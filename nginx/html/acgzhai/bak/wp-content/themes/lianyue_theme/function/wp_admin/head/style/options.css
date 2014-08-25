@@ -1,0 +1,13 @@
+/*选项css*/
+.lianyue_admin .nav-tab {cursor: pointer;font: normal 14px/30px Georgia,"Times New Roman","Bitstream Charter",Times,serif,"Microsoft YaHei Bold","Microsoft YaHei","微软雅黑","WenQuanYi Zen Hei","文泉驿正黑","WenQuanYi Micro Hei","文泉驿微米黑","黑体" !important;}
+.lianyue_admin  #icon-lianyue {background: transparent url(../image/options_logo.png) no-repeat ;height: 36px;}
+.lianyue_admin .hndle{cursor: default !important;}
+.lianyue_admin .show{display: block;}
+.lianyue_admin .hide{display: none;}
+.lianyue_admin .allcatsid{ overflow: hidden;}
+.lianyue_admin .allcatsid ul {overflow: hidden;margin:0;}
+.lianyue_admin .allcatsid ul li{ height: 42px; float:left; margin-bottom:0px; padding:0 5px; line-height:20px; text-align:center; border-right:1px solid #CCC;}
+.lianyue_admin .allcatsid ul li h2{ line-height: 25px!important;font-size:12px !important;text-decoration: none;color:#222;margin:0!important;padding:0!important;}
+.lianyue_admin .allcatsid ul li p{line-height: 20px!important; margin:0!important;padding:0!important;}
+.lianyue_admin .nav-tab-wrapper{margin-bottom:10px;}
+.lianyue_admin .inside p{margin: 0.5em 0;}

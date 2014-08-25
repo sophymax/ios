@@ -1,0 +1,96 @@
+
+# BEGIN WPSuperCache
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+#If you serve pages from behind a proxy you may want to change 'RewriteCond %{HTTPS} on' to something more sensible
+AddDefaultCharset UTF-8
+RewriteCond %{REQUEST_URI} !^.*[^/]$
+RewriteCond %{REQUEST_URI} !^.*//.*$
+RewriteCond %{REQUEST_METHOD} !POST
+RewriteCond %{QUERY_STRING} !.*=.*
+RewriteCond %{HTTP:Cookie} !^.*(comment_author_|wordpress_logged_in|wp-postpass_).*$
+RewriteCond %{HTTP:X-Wap-Profile} !^[a-z0-9\"]+ [NC]
+RewriteCond %{HTTP:Profile} !^[a-z0-9\"]+ [NC]
+RewriteCond %{HTTP_USER_AGENT} !^.*(2.0\ MMP|240x320|400X240|AvantGo|BlackBerry|Blazer|Cellphone|Danger|DoCoMo|Elaine/3.0|EudoraWeb|Googlebot-Mobile|hiptop|IEMobile|KYOCERA/WX310K|LG/U990|MIDP-2.|MMEF20|MOT-V|NetFront|Newt|Nintendo\ Wii|Nitro|Nokia|Opera\ Mini|Palm|PlayStation\ Portable|portalmmm|Proxinet|ProxiNet|SHARP-TQ-GX10|SHG-i900|Small|SonyEricsson|Symbian\ OS|SymbianOS|TS21i-10|UP.Browser|UP.Link|webOS|Windows\ CE|WinWAP|YahooSeeker/M1A1-R2D2|iPhone|iPod|Android|BlackBerry9530|LG-TU915\ Obigo|LGE\ VX|webOS|Nokia5800).* [NC]
+RewriteCond %{HTTP_user_agent} !^(w3c\ |w3c-|acs-|alav|alca|amoi|audi|avan|benq|bird|blac|blaz|brew|cell|cldc|cmd-|dang|doco|eric|hipt|htc_|inno|ipaq|ipod|jigs|kddi|keji|leno|lg-c|lg-d|lg-g|lge-|lg/u|maui|maxo|midp|mits|mmef|mobi|mot-|moto|mwbp|nec-|newt|noki|palm|pana|pant|phil|play|port|prox|qwap|sage|sams|sany|sch-|sec-|send|seri|sgh-|shar|sie-|siem|smal|smar|sony|sph-|symb|t-mo|teli|tim-|tosh|tsm-|upg1|upsi|vk-v|voda|wap-|wapa|wapi|wapp|wapr|webc|winw|winw|xda\ |xda-).* [NC]
+RewriteCond %{HTTP:Accept-Encoding} gzip
+RewriteCond %{HTTPS} on
+RewriteCond %{DOCUMENT_ROOT}/wp-content/cache/supercache/%{SERVER_NAME}/$1/index-https.html.gz -f
+RewriteRule ^(.*) "/wp-content/cache/supercache/%{SERVER_NAME}/$1/index-https.html.gz" [L]
+
+RewriteCond %{REQUEST_URI} !^.*[^/]$
+RewriteCond %{REQUEST_URI} !^.*//.*$
+RewriteCond %{REQUEST_METHOD} !POST
+RewriteCond %{QUERY_STRING} !.*=.*
+RewriteCond %{HTTP:Cookie} !^.*(comment_author_|wordpress_logged_in|wp-postpass_).*$
+RewriteCond %{HTTP:X-Wap-Profile} !^[a-z0-9\"]+ [NC]
+RewriteCond %{HTTP:Profile} !^[a-z0-9\"]+ [NC]
+RewriteCond %{HTTP_USER_AGENT} !^.*(2.0\ MMP|240x320|400X240|AvantGo|BlackBerry|Blazer|Cellphone|Danger|DoCoMo|Elaine/3.0|EudoraWeb|Googlebot-Mobile|hiptop|IEMobile|KYOCERA/WX310K|LG/U990|MIDP-2.|MMEF20|MOT-V|NetFront|Newt|Nintendo\ Wii|Nitro|Nokia|Opera\ Mini|Palm|PlayStation\ Portable|portalmmm|Proxinet|ProxiNet|SHARP-TQ-GX10|SHG-i900|Small|SonyEricsson|Symbian\ OS|SymbianOS|TS21i-10|UP.Browser|UP.Link|webOS|Windows\ CE|WinWAP|YahooSeeker/M1A1-R2D2|iPhone|iPod|Android|BlackBerry9530|LG-TU915\ Obigo|LGE\ VX|webOS|Nokia5800).* [NC]
+RewriteCond %{HTTP_user_agent} !^(w3c\ |w3c-|acs-|alav|alca|amoi|audi|avan|benq|bird|blac|blaz|brew|cell|cldc|cmd-|dang|doco|eric|hipt|htc_|inno|ipaq|ipod|jigs|kddi|keji|leno|lg-c|lg-d|lg-g|lge-|lg/u|maui|maxo|midp|mits|mmef|mobi|mot-|moto|mwbp|nec-|newt|noki|palm|pana|pant|phil|play|port|prox|qwap|sage|sams|sany|sch-|sec-|send|seri|sgh-|shar|sie-|siem|smal|smar|sony|sph-|symb|t-mo|teli|tim-|tosh|tsm-|upg1|upsi|vk-v|voda|wap-|wapa|wapi|wapp|wapr|webc|winw|winw|xda\ |xda-).* [NC]
+RewriteCond %{HTTP:Accept-Encoding} gzip
+RewriteCond %{HTTPS} !on
+RewriteCond %{DOCUMENT_ROOT}/wp-content/cache/supercache/%{SERVER_NAME}/$1/index.html.gz -f
+RewriteRule ^(.*) "/wp-content/cache/supercache/%{SERVER_NAME}/$1/index.html.gz" [L]
+
+RewriteCond %{REQUEST_URI} !^.*[^/]$
+RewriteCond %{REQUEST_URI} !^.*//.*$
+RewriteCond %{REQUEST_METHOD} !POST
+RewriteCond %{QUERY_STRING} !.*=.*
+RewriteCond %{HTTP:Cookie} !^.*(comment_author_|wordpress_logged_in|wp-postpass_).*$
+RewriteCond %{HTTP:X-Wap-Profile} !^[a-z0-9\"]+ [NC]
+RewriteCond %{HTTP:Profile} !^[a-z0-9\"]+ [NC]
+RewriteCond %{HTTP_USER_AGENT} !^.*(2.0\ MMP|240x320|400X240|AvantGo|BlackBerry|Blazer|Cellphone|Danger|DoCoMo|Elaine/3.0|EudoraWeb|Googlebot-Mobile|hiptop|IEMobile|KYOCERA/WX310K|LG/U990|MIDP-2.|MMEF20|MOT-V|NetFront|Newt|Nintendo\ Wii|Nitro|Nokia|Opera\ Mini|Palm|PlayStation\ Portable|portalmmm|Proxinet|ProxiNet|SHARP-TQ-GX10|SHG-i900|Small|SonyEricsson|Symbian\ OS|SymbianOS|TS21i-10|UP.Browser|UP.Link|webOS|Windows\ CE|WinWAP|YahooSeeker/M1A1-R2D2|iPhone|iPod|Android|BlackBerry9530|LG-TU915\ Obigo|LGE\ VX|webOS|Nokia5800).* [NC]
+RewriteCond %{HTTP_user_agent} !^(w3c\ |w3c-|acs-|alav|alca|amoi|audi|avan|benq|bird|blac|blaz|brew|cell|cldc|cmd-|dang|doco|eric|hipt|htc_|inno|ipaq|ipod|jigs|kddi|keji|leno|lg-c|lg-d|lg-g|lge-|lg/u|maui|maxo|midp|mits|mmef|mobi|mot-|moto|mwbp|nec-|newt|noki|palm|pana|pant|phil|play|port|prox|qwap|sage|sams|sany|sch-|sec-|send|seri|sgh-|shar|sie-|siem|smal|smar|sony|sph-|symb|t-mo|teli|tim-|tosh|tsm-|upg1|upsi|vk-v|voda|wap-|wapa|wapi|wapp|wapr|webc|winw|winw|xda\ |xda-).* [NC]
+RewriteCond %{HTTPS} on
+RewriteCond %{DOCUMENT_ROOT}/wp-content/cache/supercache/%{SERVER_NAME}/$1/index-https.html -f
+RewriteRule ^(.*) "/wp-content/cache/supercache/%{SERVER_NAME}/$1/index-https.html" [L]
+
+RewriteCond %{REQUEST_URI} !^.*[^/]$
+RewriteCond %{REQUEST_URI} !^.*//.*$
+RewriteCond %{REQUEST_METHOD} !POST
+RewriteCond %{QUERY_STRING} !.*=.*
+RewriteCond %{HTTP:Cookie} !^.*(comment_author_|wordpress_logged_in|wp-postpass_).*$
+RewriteCond %{HTTP:X-Wap-Profile} !^[a-z0-9\"]+ [NC]
+RewriteCond %{HTTP:Profile} !^[a-z0-9\"]+ [NC]
+RewriteCond %{HTTP_USER_AGENT} !^.*(2.0\ MMP|240x320|400X240|AvantGo|BlackBerry|Blazer|Cellphone|Danger|DoCoMo|Elaine/3.0|EudoraWeb|Googlebot-Mobile|hiptop|IEMobile|KYOCERA/WX310K|LG/U990|MIDP-2.|MMEF20|MOT-V|NetFront|Newt|Nintendo\ Wii|Nitro|Nokia|Opera\ Mini|Palm|PlayStation\ Portable|portalmmm|Proxinet|ProxiNet|SHARP-TQ-GX10|SHG-i900|Small|SonyEricsson|Symbian\ OS|SymbianOS|TS21i-10|UP.Browser|UP.Link|webOS|Windows\ CE|WinWAP|YahooSeeker/M1A1-R2D2|iPhone|iPod|Android|BlackBerry9530|LG-TU915\ Obigo|LGE\ VX|webOS|Nokia5800).* [NC]
+RewriteCond %{HTTP_user_agent} !^(w3c\ |w3c-|acs-|alav|alca|amoi|audi|avan|benq|bird|blac|blaz|brew|cell|cldc|cmd-|dang|doco|eric|hipt|htc_|inno|ipaq|ipod|jigs|kddi|keji|leno|lg-c|lg-d|lg-g|lge-|lg/u|maui|maxo|midp|mits|mmef|mobi|mot-|moto|mwbp|nec-|newt|noki|palm|pana|pant|phil|play|port|prox|qwap|sage|sams|sany|sch-|sec-|send|seri|sgh-|shar|sie-|siem|smal|smar|sony|sph-|symb|t-mo|teli|tim-|tosh|tsm-|upg1|upsi|vk-v|voda|wap-|wapa|wapi|wapp|wapr|webc|winw|winw|xda\ |xda-).* [NC]
+RewriteCond %{HTTPS} !on
+RewriteCond %{DOCUMENT_ROOT}/wp-content/cache/supercache/%{SERVER_NAME}/$1/index.html -f
+RewriteRule ^(.*) "/wp-content/cache/supercache/%{SERVER_NAME}/$1/index.html" [L]
+</IfModule>
+
+# END WPSuperCache
+
+
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress
+
+<Files 403.shtml>
+order allow,deny
+allow from all
+</Files>
+
+deny from 203.195.184.26
+deny from 199.58.86.211
+deny from 183.60.243.234
+deny from 106.37.173.131
+deny from 106.120.121.156
+deny from 124.114.48.28
+deny from 119.145.148.223
+deny from 216.172.56.37
+deny from 61.160.224.185
+deny from 220.181.158.109
+deny from 54.245.122.148
+deny from 38.99.82.191
+deny from 38.99.82.
+deny from 188.40.114.21
+deny from 60.176.254.181

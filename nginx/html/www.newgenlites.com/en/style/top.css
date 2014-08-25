@@ -1,0 +1,72 @@
+.top {
+	width: 1150px;
+	margin-right: auto;
+	margin-left: auto;min-height:50px;height:auto;*height:auto!important; _height: auto;overflow:hidden;clear:both;
+}
+.so {
+	margin-top: 0px;
+}
+.tops {
+	width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+}
+/*ËÑË÷*/
+.sou {margin-top: 50px;}
+.searchinput{
+	border-right-width: 0px;
+	padding-left: 3px;
+	width: 70px;
+	float: left;
+	color: #0099FF;
+	margin-left: 25px;
+	font-size: 9pt;
+	vertical-align: middle;
+	border-left-width: 0px;
+	margin-right: 3px;
+	border:0px;
+	line-height:15px;
+	background-color: #000;
+}
+.tab_search{
+	height: 28px;
+	background-image: url(/images/s_06.gif);
+	background-repeat: no-repeat;
+}
+.searchaction{width: 28px;float: left;height: 28px;}
+/*ËÑË÷*/
+.menu {
+	float: left;
+	height: 42px;
+	width: 149px;
+}
+.menu_r {
+	float: left;
+}
+.fuck {
+	width: 1150px;
+	margin-right: auto;
+	margin-left: auto;
+	min-height:50px;
+	height:613px;
+	background-image: url(../images/log.jpg);
+	background-repeat: no-repeat;
+}
+.fon {
+	font-family: "Î¢ÈíÑÅºÚ";
+	font-size: 18px;
+	height: 50px;margin-top:20px;
+}
+.fuck_f {
+	background-image: url(../images/f_07.jpg);
+	background-repeat: no-repeat;
+	background-position: top;
+	height: 60px;margin-top:20px;
+}
+.fuck2 {
+	width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+	min-height:50px;
+	height:613px;
+}

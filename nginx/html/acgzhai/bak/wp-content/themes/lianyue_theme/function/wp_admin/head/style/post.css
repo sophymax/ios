@@ -1,0 +1,8 @@
+/*编辑页面css*/
+
+#lianyue_div{border-bottom: 1px solid #CCC;margin:0 -10px!important;padding:8px 15px;}
+.mukiopress_content{padding:8px 5px;border-bottom: 1px solid #CCC;}
+.mukiopress_template .mukiopress_del{display: none; }
+#lianyue_mukiopress  .inside #mukiopress{padding-bottom: 8px;border-bottom: 3px solid #ccc;overflow: auto; max-height:300px; *height:300px;}
+#postimagediv .attachment-post-thumbnail{width:100%!important;height:180px!important;}
+.wp_themeSkin span .mce_nextpage{background-position: 0 -40px;}

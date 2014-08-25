@@ -1,0 +1,751 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Code宅</title>
+	<atom:link href="http://www.codezhai.com/feed/" rel="self" type="application/rss+xml" />
+	<link>http://www.codezhai.com</link>
+	<description></description>
+	<lastBuildDate>Thu, 21 Aug 2014 04:22:44 +0000</lastBuildDate>
+	<language>zh-CN</language>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.9.2</generator>
+	<item>
+		<title>Code宅建站日记 7:谷歌字体的处理、Replace-Google-Fonts、360前端公共库的故障以及备案引发的一堆幺蛾子</title>
+		<link>http://www.codezhai.com/code/code%e5%ae%85%e5%bb%ba%e7%ab%99%e6%97%a5%e8%ae%b0-%e8%b0%b7%e6%ad%8c%e5%ad%97%e4%bd%93-%e5%a4%87%e6%a1%88/</link>
+		<comments>http://www.codezhai.com/code/code%e5%ae%85%e5%bb%ba%e7%ab%99%e6%97%a5%e8%ae%b0-%e8%b0%b7%e6%ad%8c%e5%ad%97%e4%bd%93-%e5%a4%87%e6%a1%88/#comments</comments>
+		<pubDate>Thu, 21 Aug 2014 04:21:53 +0000</pubDate>
+		<dc:creator><![CDATA[Sophymax]]></dc:creator>
+				<category><![CDATA[Code]]></category>
+		<category><![CDATA[google]]></category>
+		<category><![CDATA[web服务器]]></category>
+		<category><![CDATA[安全]]></category>
+		<category><![CDATA[建站]]></category>
+		<category><![CDATA[用户体验]]></category>
+
+		<guid isPermaLink="false">http://www.codezhai.com/?p=1045</guid>
+		<description><![CDATA[google被屏蔽几个月了，对网站的影响无非就是google字体，存放字体文件和相关的googleapi域名无 [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p><span class='wp_keywordlink'><a href="http://www.codezhai.com/tech/google-%E6%90%9C%E7%B4%A2%E7%BB%93%E6%9E%9C%E5%B9%B2%E9%A2%84-%E9%9A%90%E7%A7%81/" title="谷歌接收12,000份欧盟公民删除隐私搜索结果的请求" target="_blank">google</a></span>被屏蔽几个月了，对<span class='wp_keywordlink'><a href="http://www.codezhai.com/tech/code%E5%AE%85-%E5%BB%BA%E7%AB%99-cdn-%E4%BC%98%E5%8C%96-woff-themes-googleusercontent/" title="Code宅建站日记 2：网站搬迁以及cdn配置，themes.googleusercontent.com下woff的处理，静态资源的中国特色优化" target="_blank">网站</a></span>的影响无非就是google字体，存放字体文件和相关的googleapi域名无法访问，在上个wordpress版本中，费劲心机查找出所有<span class='wp_keywordlink'><a href="http://www.codezhai.com/code/google-xss-game-appspot-com-%E8%B0%B7%E6%AD%8Cxss%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95%E6%B8%B8%E6%88%8F%E6%94%BB%E7%95%A5/" title="Google’s XSS Game:谷歌XSS漏洞测试游戏xss-game.appspot.com攻略" target="_blank">谷歌</a></span>字体的文件，把url改成本地的或者国内CDN的，之后wordpress发布3.9.2，貌似修复了几个<span class='wp_keywordlink'><a href="http://www.codezhai.com/code/clickjacking-amazon-com/" title="在Amazon.com发现的一个clickjacking安全漏洞" target="_blank">安全</a></span>漏洞，就把wordpress更新了（wordpress以及这个主题我自己也修改了好多，不然网站首页不会是现在这个图文并茂的样子，所以本站只更新wordpress版本，主题只能自己维护，没办法更新主题），这个更新并没造成多大影响，但是折腾好的本地谷歌字体url又被弄成谷歌的了，之前的辛苦可以说是白费了，也懒的再弄一遍。</p>
+<p>这个时候想起前几天各大博主推荐的360谷歌字体前端公共库，都说不错，虽然对360比较不认可但这件事做的还真不错，至少这个谷歌字体公共库其他几家就没有，还有个淘宝的同学写了个wordpress插件，自动把谷歌字体url替换成360cdn公共库的，很是方便，遂拿来使用，效果不错，但是从前天开始，存放字体的那个url（就是后缀woff的）没办法访问了（请求字体的那个css文件到时可以请求到，字体文件在日本能够访问，明显是国内的CDN出了问题），导致打开网站后上面的加载标志一直转，蛋疼了，还真是不能放心用360的东西，无论是整云服务CDN、还是做<span class='wp_keywordlink'><a href="http://www.codezhai.com/tech/banned-for-life-google-android/" title="终生封杀:开发安卓应用的潜在风险,谷歌严厉的处罚政策" target="_blank">手机</a></span>等等等等，都是360的副产品而已，有些就是为了上个新闻搞噱头才搞的东西，不可能话费太多精力来搞，就这个字体的问题，发现是8月19号，一直到8月21号也就是今天也没人解决，而且这几天也不是周末是工作日，所以这个东西就没人重视，没专人来维护，如果说啥叫不靠谱，类似于这次这种的服务故障就是不靠谱。</p>
+<p>吐槽了一会360，来说下解决方法吧。因为我们手头还有Replace Google Fonts这个插件，源代码也是公开的，找出来，把源代码里的那个360前端公共库的地址换成自己的就可以了，值得注意的是，url是这种“http://xxxx.xxxx.com/css?family=Open+Sans%3A300italic%2C400italic%2C600italic%2C300%2C400%2C600&amp;subset=latin%2Clatin-ext&amp;ver=3.9.2” 类型的，这种文件名，无论是cdn，还是自己用apache、<span class='wp_keywordlink'><a href="http://www.codezhai.com/code/openresty-memcache-upstream/" title="openresty使用笔记:1、lua借助upstream连接至memcache" target="_blank">nginx</a></span>来配置，“？”作为一个url关键字来说是很难处理的，因为url访问的时候会访问css这个文件，后面的一堆不会处理成文件名，具体的解决方法在另一篇我的另一篇博文里：<a href="http://www.codezhai.com/code/openresty-lua-%E5%85%A8%E7%AB%99%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90copy-%E6%8A%93%E7%AB%99%E7%A8%8B%E5%BA%8F-%E6%95%B4%E7%AB%99%E6%8A%93%E5%8F%96/">openresty使用笔记4:全站静态资源copy的一些事儿</a>  ,所幸我这里的没有请求其他字体，我们当成一个静态的css文件就可以，所以这个“css?family=Open+Sans%3A300italic%2C400italic%2C600italic%2C300%2C400%2C600&amp;subset=latin%2Clatin-ext&amp;ver=3.9.2”直接以名为“css”的文件放在磁盘或者CDN上就可以了，？后面的自动忽略，里面的几个woff地址也改成自己的，同时把那几个woff文件<span class='wp_keywordlink'><a href="http://www.codezhai.com/tech/gmail-android-%E5%AE%89%E5%8D%93-google-play-app-billion/" title="Gmail安卓客户端首次突破10亿下载量" target="_blank">下载</a></span>至本地，保存，刷新cache，问题解决。</p>
+<p>&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-我是美丽的分割线&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-</p>
+<p>借着google被墙的话题说说相关的另一个问题：备案。</p>
+<p>上个月曾经心血来潮想做备案，自然是用阿里云的那个备案系统，期间几经周折变动，幕布都给寄了，后来又因为其他原因（主要是声音甜美的备案客服告诉我xxxx个人不能做，yyyy也不能做，北京的个人备案没办法做迁移、山东的网站监管又幺蛾子多等等）决定放弃备案。那就来说说备案的那些事儿：</p>
+<p><strong>个人网站不需要做个人备案</strong></p>
+<p>不是说备案不需要，备案还是有很多好处的，备案不是问题，个人备案才是问题，达到一定用户量，网站里面有互动，放在境内备案网站被封掉的概率不比放境外小，境外还能有封掉后换ip的自由，国内被封掉，备案号就注销了，国内再无容身之地，另外，放国内备案号注销域名也就差不多加黑名单了，域名就废了，用心做站的话，达到一定用户量后想办法拿企业备案，个人备案随便找一条条款就能把网站封掉，这个条款还不一定是法律条文，而是当地的某个地方规定。所以，备案对一个稍大点的网站时必要的，但是这个备案绝不是个人备案，而是企业备案，个人备案并不能让网站更安全，反而会有更多不必要的麻烦，在有办法拿到正规的企业备案前，还是建议网站放亚洲其它地区的服务器上，另：个人备案没办法平滑地转成企业备案，北京是明令禁止，其他省份也要走冗长的审批流程，实际操作中也都是先注销个人备案再关站申请企业备案来的保险，因为几乎所有网站必定会出现个人网站禁止出现的东西，比如你的网站有个用户评论、再比如你转载了篇新闻或者发表了对时下某个事情的看法和分析，抠一下当地相关法规的话，会发现这写都是不允许个人网站做的，再比如网站里面有xx爱好、技术交流、<span class='wp_keywordlink'><a href="http://www.acgzhai.net" title="ACG宅-游戏动漫搜索引擎" target="_blank">动漫</a></span>研究、程序员之类的词语，规则上也是不允许个人网站做的，有任何小群体性质的网站个人做都是违规的，所以个人备案是没必要去折腾的，只会有数不尽的麻烦和不确定性，备案对稍具规模的网站是必要的，但这里的备案是指企业备案。个人备案很有可能产生的现象是：网站不会被墙，但是会天天会被人通知审查内容，删东西，为此还开发了一套代码量不少的处理敏感词的工具，最糟的是，东窗事发，网站域名直接被停止解析（参考ACFUN的A岛七月份的事件），同时域名被加黑名单，这个时候除非有强大的公关团队，是很难把域名从黑名单那里拽出来的。</p>
+<p>放在境外有被墙的危险，但是放在境内这个危险就成了额外不必要工作量、关站、域名报废的危险，个人备案折腾了后更没能让自己的网站更安全，只是从一种风险变成了另一种风险（后者还有可能比前者更严重），所以，平时注意自己网站的内容，不需要做个人备案。</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.codezhai.com/code/code%e5%ae%85%e5%bb%ba%e7%ab%99%e6%97%a5%e8%ae%b0-%e8%b0%b7%e6%ad%8c%e5%ad%97%e4%bd%93-%e5%a4%87%e6%a1%88/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>说说大家在服务器上干过最蠢的事情！</title>
+		<link>http://www.codezhai.com/code/%e6%9c%8d%e5%8a%a1%e5%99%a8-%e6%93%8d%e4%bd%9c%e5%a4%b1%e8%af%af-%e4%ba%8b%e6%95%85/</link>
+		<comments>http://www.codezhai.com/code/%e6%9c%8d%e5%8a%a1%e5%99%a8-%e6%93%8d%e4%bd%9c%e5%a4%b1%e8%af%af-%e4%ba%8b%e6%95%85/#comments</comments>
+		<pubDate>Tue, 19 Aug 2014 03:37:24 +0000</pubDate>
+		<dc:creator><![CDATA[Sophymax]]></dc:creator>
+				<category><![CDATA[Code]]></category>
+		<category><![CDATA[web服务器]]></category>
+		<category><![CDATA[安全]]></category>
+
+		<guid isPermaLink="false">http://www.codezhai.com/?p=1039</guid>
+		<description><![CDATA[V2EX有人发起的个话题，很有意思： Reply 1 ilili 12 小时 47 分钟前 via andro [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>V2EX有人发起的个话题，很有意思：<br />
+Reply 1<br />
+ilili 12 小时 47 分钟前 via <span class='wp_keywordlink'><a href="http://www.codezhai.com/tech/banned-for-life-google-android/" title="终生封杀:开发安卓应用的潜在风险,谷歌严厉的处罚政策" target="_blank">android</a></span><br />
+关机</p>
+<p>Reply 2<br />
+tammy 12 小时 45 分钟前<br />
+rm -fR /* 我没试过，我就告诉小白这是<span class='wp_keywordlink'><a href="http://www.codezhai.com/code/openresty-%E7%BC%96%E8%AF%91-%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93-mcrypt-lua/" title="openresty使用笔记:2、编写高速加密动态库之libmcrypt的lua插件化" target="_blank">优化</a></span>代码</p>
+<p>Reply 3<br />
+misaka 12 小时 23 分钟前 via Android<br />
+升级 Ubuntu 。。。十次升级九次 SSH 就再也连不上了。。。(这两年再也没敢干过，希望有人跟我讲现在正常了)</p>
+<p>Reply 4<br />
+66450146 12 小时 20 分钟前<br />
+sudo apt-get dist-upgrade</p>
+<p>Reply 5<br />
+phuslu 12 小时 20 分钟前 ♥ 1<br />
+禁用网卡。</p>
+<p>Reply 6<br />
+Havee 12 小时 10 分钟前<br />
+startx</p>
+<p>Reply 7<br />
+66450146 12 小时 9 分钟前<br />
+@tammy This is not funny.</p>
+<p>Reply 8<br />
+shiny 12 小时 8 分钟前<br />
+基本都是没睡醒的时候操作失误的，比如用 &gt; 把唯一的备份 sql 给清空了；误 rm 文件…</p>
+<p>Reply 9<br />
+NearTan 12 小时 5 分钟前<br />
+22端口关了<br />
+把网卡down了</p>
+<p>Reply 10<br />
+geeklian 12 小时 0 分钟前<br />
+生产服务器apt-get upgrade一次，直接悲剧了。</p>
+<p>Reply 11<br />
+onemoo 11 小时 53 分钟前<br />
+iptables -t filter -P INPUT DROP</p>
+<p>Reply 12<br />
+ShunYea 11 小时 52 分钟前 via Android<br />
+把阵列卡删除又重做raid，然后就……</p>
+<p>Reply 13<br />
+ss098 11 小时 32 分钟前 via Android<br />
+把 Windows 服務器的設置為自動獲取 IP。</p>
+<p>Reply 14<br />
+allan888 11 小时 23 分钟前<br />
+update没有加where。<br />
+还好是在创业公司，项目又刚开发没多久，回想起来都觉得后背凉。</p>
+<p>Reply 15<br />
+Tink 11 小时 19 分钟前 via iPad<br />
+rm -rf * .log</p>
+<p>Reply 16<br />
+wogong 11 小时 7 分钟前<br />
+chown user * ~</p>
+<p>Reply 17<br />
+invsbelephant 11 小时 7 分钟前<br />
+还是sybase数据库的时候，<br />
+delete * from 生产表;<br />
+该死的自动提交！突然发现时手都哆嗦了，未执行完强制终端关机也没用，还是提交上去了。<br />
+然后拿磁带出来还原备份，直到第二天赶在营业前恢复。</p>
+<p>Reply 18<br />
+hjc4869 11 小时 6 分钟前<br />
+chmod -R +x /*，仅仅是打掉了一个点而已…</p>
+<p>Reply 19<br />
+mind3x 11 小时 5 分钟前<br />
+rm -rf /</p>
+<p>我真是做过的。十多年前。那时候还在用ext2。</p>
+<p>然后就马上<span class='wp_keywordlink'><a href="http://www.codezhai.com/tech/google-%E6%90%9C%E7%B4%A2%E7%BB%93%E6%9E%9C%E5%B9%B2%E9%A2%84-%E9%9A%90%E7%A7%81/" title="谷歌接收12,000份欧盟公民删除隐私搜索结果的请求" target="_blank">google</a></span>，手动恢复了一晚上的文件。</p>
+<p>Reply 20<br />
+ehs2013 11 小时 4 分钟前<br />
+tar czvf logs.tar.gz ./*.log<br />
+rm -rf *</p>
+<p>Reply 21<br />
+hjc4869 11 小时 4 分钟前<br />
+另一件事是1G RAM的windows server虚拟机上装迅雷。</p>
+<p>Reply 22<br />
+bianzhifu 11 小时 3 分钟前<br />
+14点上线，13点58分删除mysql data目录，赶紧从开发库弄过去</p>
+<p>Reply 23<br />
+roricon 10 小时 46 分钟前<br />
+配置iptables忘配置允许自己连接了……</p>
+<p>Reply 24<br />
+roricon 10 小时 45 分钟前<br />
+@invsbelephant 听起来像是证券……</p>
+<p>Reply 25<br />
+zwy100e72 10 小时 29 分钟前</p>
+<p>http://coolshell.cn/articles/4875.html</p>
+<p>我只是添加一个例子。。。</p>
+<p>Reply 26<br />
+oott123 10 小时 25 分钟前 via Android<br />
+把备份文件命名为 home_backup。<br />
+想删除，rm -f ho[Tab] 直接回车。<br />
+把 home 删了。<br />
+（文件名为虚构…）<br />
+后来我都把备份改叫 backup_anything</p>
+<p>Reply 27<br />
+Quaintjade 9 小时 42 分钟前<br />
+windowsazure装centos，iptables封所有端口忘把ssh例外。因为没有console，又不是生产环境，想了想就重装了。<br />
+装完才想起iptables开机默认是不启动的，实际上只要重启一下即可。</p>
+<p>Reply 28<br />
+aveline 9 小时 37 分钟前<br />
+在 CentOS 的机器上 iptables -F &#8230; 然后我被挡在外面了</p>
+<p>Reply 29<br />
+66CCFF 9 小时 25 分钟前 via Android<br />
+在一台服务器上安装了电驴，一年后硬盘君死的好惨</p>
+<p>Reply 30<br />
+aheadlead 9 小时 16 分钟前 via iPhone<br />
+在aliyun上跑ubuntu<br />
+弄dns的时候<br />
+总是打sudo killall mDNSResponder<br />
+总觉得奇怪没用&#8230;<br />
+仔细一看原来是ssh在服务器上..</p>
+<p>Reply 31<br />
+lightening 9 小时 9 分钟前<br />
+kill sshd</p>
+<p>Reply 32<br />
+shakoon 9 小时 1 分钟前<br />
+linux的机器上删了网卡，windows的机器删了远程连接角色</p>
+<p>Reply 33<br />
+typcn 8 小时 50 分钟前 via iPad<br />
+设置密钥文件，上传公钥保存，随手把本地目录的key清空了。。。。。。</p>
+<p>Reply 34<br />
+konakona 7 小时 48 分钟前<br />
+還沒。</p>
+<p>Reply 35<br />
+babytomas 7 小时 38 分钟前<br />
+最愚蠢的就是为了方便，什么命令都加 -r 。。</p>
+<p>Reply 36<br />
+molinxx 6 小时 24 分钟前 via iPhone ♥ 1<br />
+12台VDS开LOIC炸B站，被charge了1200USD的流量费用。。。</p>
+<p>Reply 37<br />
+aveline 5 小时 17 分钟前<br />
+@molinxx 你这么说我想到了我之前炸另外一个乱黑人的 Blog 的时候，16 台服务器一起开日，然后 &#8230; 好像忘记在路由器上做 QoS 了于是我管理都连不上了</p>
+<p>Reply 38<br />
+unfinishedcode 4 小时 49 分钟前 ♥ 2<br />
+不是我的，在quora上看到的：<br />
+为了插<span class='wp_keywordlink'><a href="http://www.codezhai.com/tech/banned-for-life-google-android/" title="终生封杀:开发安卓应用的潜在风险,谷歌严厉的处罚政策" target="_blank">手机</a></span>充电器把主服务器电源拔了。</p>
+<p>原文：</p>
+<p>http://qr.ae/uzr9d</p>
+<p>Reply 39<br />
+oott123 3 小时 56 分钟前 via Android<br />
+@unfinishedcode 这个厉害！<br />
+我倒是把充电线插在服务器的 usb 口上充电过…</p>
+<p>Reply 40<br />
+loading 3 小时 52 分钟前 via Android<br />
+自己电脑试过：安装一个新内核，没重启，删除现在用的那个，然后，起不来～</p>
+<p>Reply 41<br />
+ETiV 3 小时 18 分钟前 via iPhone ♥ 1<br />
+在机房管理人员的带领下，把别人的服务器给格了。</p>
+<p>丫指错了！</p>
+<p>Reply 42<br />
+rainysia 3 小时 5 分钟前 ♥ 1<br />
+移动核心机房的一个我们公司的主机故障， 现场手误把那根主机铜线裸露在外的电源线搭在了机架下。</p>
+<p>然后整个机房重启2分钟。</p>
+<p>Reply 43<br />
+jianghu52 2 小时 52 分钟前<br />
+解压缩一个zip包。位置不对。把htdocs的映射给修改了。然后就只有我的一个项目正常访问。其他13个项目都不能访问了~</p>
+<p>Reply 44<br />
+missdeer 2 小时 50 分钟前<br />
+Azure中国装了Ubuntu，时不时要求更新重启，艹</p>
+<p>Reply 45<br />
+lucifer9 2 小时 43 分钟前<br />
+某省联通核心机房顺手把防火墙规则改成了 deny all<br />
+貌似全省断网若干分钟吧<br />
+后来还被腾讯投诉了</p>
+<p>Reply 46<br />
+geeti 2 小时 40 分钟前<br />
+@tammy sudo才能彻底优化</p>
+<p>Reply 47<br />
+penjianfeng 2 小时 36 分钟前<br />
+@geeti 它是root直接操作,哈哈哈</p>
+<p>Reply 48<br />
+mengzhuo 2 小时 29 分钟前<br />
+给服务器优化负载均衡<br />
+结果客服访问没有问题，客户访问全挂了，客服一个劲说你们的网络配置有问题。<br />
+好在发现得早……故障了大概1分钟</p>
+<p>Reply 49<br />
+sivacohan 2 小时 26 分钟前 via Android<br />
+机器双网卡，一个提供外网访问，一个提供内网访问，我直接把两个网卡ip对换，然后我就怎么都连不上了。<br />
+最后，还好机房有kvm，又改回来了</p>
+<p>Reply 50<br />
+ddter 2 小时 20 分钟前<br />
+拿客户服务器挖矿算嘛。。。</p>
+<p>Reply 51<br />
+assassinpig 2 小时 15 分钟前<br />
+rm -rf</p>
+<p>Reply 52<br />
+coderwang 2 小时 11 分钟前<br />
+debian 6 用 7的源 update upgrade 。。。。</p>
+<p>Reply 53<br />
+rayu 2 小时 9 分钟前<br />
+iptables 把自己顺带给DROP了</p>
+<p>Reply 54<br />
+jamiesun 2 小时 8 分钟前<br />
+@ETiV 牛，</p>
+<p>贴标签时我被机房管理人员指错，把主备搞反，网线接错导致服务停机5分钟，客服被打爆了。</p>
+<p>Reply 55<br />
+sophymax 2 小时 0 分钟前 via iPad<br />
+ssh里运行重启网卡的命令</p>
+<p>Reply 56<br />
+thinkmore 1 小时 57 分钟前<br />
+当初直接去按物理键重启服务器而不是用reboot</p>
+<p>Reply 57<br />
+rrrrutdk 1 小时 55 分钟前<br />
+远程Windows服务器，不知道为什么脑子里想重启网络配置，于是右键网卡选了断开。</p>
+<p>Reply 58<br />
+anubiskong 1 小时 53 分钟前<br />
+安装vpn和ftp</p>
+<p>Reply 59<br />
+cdffh 1 小时 49 分钟前<br />
+修改网卡配置文件，vim /etc/network/intrefaces 改错了。直接悲剧了。</p>
+<p>Reply 60<br />
+likuku 1 小时 46 分钟前<br />
+老旧机器上对 ext3 的 / 做了强制 fsck；本想重启自己笔记本电脑，下达 reboot 后，发觉自己笔记本电脑没有重启&#8230;</p>
+<p>Reply 61<br />
+tititake 1 小时 46 分钟前<br />
+某天早上更新，执行了个初始化数据库结构的ant任务，把数据都给干掉了。<br />
+最后恢复到了凌晨的备份，丢失了几个小时的数据。</p>
+<p>Reply 62<br />
+dongk 1 小时 34 分钟前<br />
+@allan888 +1</p>
+<p>Reply 63<br />
+arcas 1 小时 34 分钟前<br />
+多个终端不小心halt了远端服务器。</p>
+<p>Reply 64<br />
+cYcoco 1 小时 31 分钟前<br />
+@tammy 傻比</p>
+<p>Reply 65<br />
+dong3580 1 小时 27 分钟前<br />
+delete * from xxx<br />
+where id=xxxxxx<br />
+结果点选执行的时候手贱没选中下一行的where。。。数据库没备份。。。然后丢失一周的数据了。</p>
+<p>Reply 66<br />
+lonely520224 1 小时 24 分钟前<br />
+iptables把自己挂了，最后重装的系统</p>
+<p>Reply 67<br />
+barbery 1 小时 23 分钟前<br />
+@66450146 +1啊。。。升级了，尼玛不能退回来，只能重装</p>
+<p>Reply 68<br />
+xiaobu 1 小时 22 分钟前<br />
+@aveline 是不是前两天刚干过 XD</p>
+<p>Reply 69<br />
+yhehior 1 小时 15 分钟前<br />
+ok，我也讲一个，两年前工作压力非常大，头脑有时候不清楚，在一个南方的某个地市做网络优化，一条命令下去整个地市上不去网，打不出电话了两个小时。。</p>
+<p>Reply 70<br />
+qdcanyun 1 小时 15 分钟前<br />
+把服务器当qa给重启了 服务停摆10分钟</p>
+<p>Reply 71<br />
+aveline 1 小时 5 分钟前 via iPhone<br />
+@xiaobu 前两天是杀毒的时候 grep 忘记转义了把 sshd kill 了……</p>
+<p>Reply 72<br />
+laven 1 小时 5 分钟前<br />
+rm -fr src *</p>
+<p>Reply 73<br />
+jsonline 1 小时 2 分钟前<br />
+人类真是不靠谱啊</p>
+<p>Reply 74<br />
+ZMOM1031 1 小时 0 分钟前<br />
+@typcn 这里也能见到你啊</p>
+<p>Reply 75<br />
+lincanbin 51 分钟前<br />
+开了个离线<span class='wp_keywordlink'><a href="http://www.codezhai.com/tech/gmail-android-%E5%AE%89%E5%8D%93-google-play-app-billion/" title="Gmail安卓客户端首次突破10亿下载量" target="_blank">下载</a></span>服务器下毛片，然后占用带宽超过50M，让管理员关了，导致<span class='wp_keywordlink'><a href="http://www.codezhai.com/tech/code%E5%AE%85-%E5%BB%BA%E7%AB%99-cdn-%E4%BC%98%E5%8C%96-woff-themes-googleusercontent/" title="Code宅建站日记 2：网站搬迁以及cdn配置，themes.googleusercontent.com下woff的处理，静态资源的中国特色优化" target="_blank">网站</a></span>无法访问。<br />
+我向管理员保证以后自行限制带宽不超50M，这才再开了。</p>
+<p>Reply 76<br />
+reeco 44 分钟前<br />
+下小电影</p>
+<p>Reply 77<br />
+fkj 44 分钟前 via Android<br />
+ubuntu 14.04装zabbix，复制代码时复制了12.04的源，倒腾了一天死活想不出来为什么满足不了关系。。</p>
+<p>&nbsp;</p>
+<p>Reply 80<br />
+littlepanzh 39 分钟前<br />
+SQL服务器硬盘坏了，还好做了raid1，开开心心把那块好的硬盘取出来，然后格式化了。。。。。。</p>
+<p>Reply 81<br />
+vvoody 28 分钟前<br />
+禁止ssh root登录、密码登录后，忘记把新建的普通用户的ssh key上传了</p>
+<p>Reply 82<br />
+rockagen 21 分钟前<br />
+init 0</p>
+<p>Reply 83<br />
+lijinma 15 分钟前<br />
+不小心把 mysql 中的 mysql 表 drop 了</p>
+<p>Reply 84<br />
+panlilu 10 分钟前<br />
+denyhost把跳板机ban了。。</p>
+<p>Reply 85<br />
+xiaolang 9 分钟前<br />
+chmod *bank 777</p>
+<p>Reply 86<br />
+mhycy 13 分钟前<br />
+配置Windows的防火墙软件的时候，远程桌面改了端口还没重启，然后在规则里面把3389给ban了。。。<br />
+那服务器还是在外地机房。。。。囧</p>
+<p>Reply 87<br />
+Rgss 2 分钟前<br />
+mysql 删个东西， 忘记加条件了，， delete * from xxx&#8230; 回车后差点没吓出汗来。。。 后面发现表名打错， 报错， 深深呼吸一口气。。</p>
+<p>  Reply    90<br />
+ccidcce32167   4 分钟前<br />
+折腾ssh证书 ssh在远程服务器上搞 创建了publick key 和private key ，一兴奋没把private key 复制出来就关掉了ssh 然后就傻眼了</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.codezhai.com/code/%e6%9c%8d%e5%8a%a1%e5%99%a8-%e6%93%8d%e4%bd%9c%e5%a4%b1%e8%af%af-%e4%ba%8b%e6%95%85/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>EvenClear-an amusing block decompose game</title>
+		<link>http://www.codezhai.com/tech/even-clear/</link>
+		<comments>http://www.codezhai.com/tech/even-clear/#comments</comments>
+		<pubDate>Sat, 16 Aug 2014 16:43:30 +0000</pubDate>
+		<dc:creator><![CDATA[Sophymax]]></dc:creator>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[android]]></category>
+		<category><![CDATA[app]]></category>
+		<category><![CDATA[app store]]></category>
+		<category><![CDATA[手机]]></category>
+		<category><![CDATA[游戏]]></category>
+
+		<guid isPermaLink="false">http://www.codezhai.com/?p=1033</guid>
+		<description><![CDATA[EvenClear  https://itunes.apple.com/us/app/evenclear/id [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p><img class="alignnone" src="https://s2.mzstatic.com/us/r30/Purple4/v4/1e/ff/f4/1efff4c4-7037-3fb5-d332-83d1bcef0690/mzl.amwophfe.png?downloadKey=1408811582_4a5995eb9100201132900bf00666fa29" alt="" width="456" height="343" /></p>
+<p>EvenClear  https://itunes.apple.com/us/app/evenclear/id904933908?l=zh&amp;ls=1&amp;mt=8</p>
+<p>A little block decompose game,with cute UI style.Once you start to  play it,you will found out that  you have spend several hours on it. Decompose the even number block again and again, and then you can get more scores and reach new levels. Yes, it&#8217;s a game that we never need to use our brains!</p>
+<p>ひと塊のの小さいゲーム、インターフェースはとても活発で、見た目には退屈な図形のゲームが、簡単に見える無比の小さいゲームが上手後私花何時間も止められなくて、ずっとひっきりなしににこの山を偶数ブロックに分け、分終わった後にまた新しいより復雑な偶数キューブの分解の必要、まったく止まらなくて、間違いなくて、もうこんなに陥った頭に動かないのゲームの中で。</p>
+<p><span style="color: #000000; font-family: 'Lucida Grande',Geneva,Verdana,Arial; font-size: 13.3333px; font-style: normal; font-variant: normal; letter-spacing: normal; line-height: normal; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; word-spacing: 0px; background-color: #ffffff; display: inline ! important; float: none;">一个方块消除的小游戏，界面很是活泼，虽然看起来是个无聊的图形游戏，但是这个看起来无比简单的小游戏上手后竟让我花了几个小时停不下来，一直不停地去把这堆偶数方块分开，分完后又会有新的更复杂的偶数方块需要分解，根本停不下来，没错，已经陷入了这种不用动脑子的游戏中。</span></p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.codezhai.com/tech/even-clear/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>openresty使用笔记5:UTF-8中文字符的类substring截取</title>
+		<link>http://www.codezhai.com/code/openresty%e4%bd%bf%e7%94%a8%e7%ac%94%e8%ae%b0-utf8%e4%b8%ad%e6%96%87%e5%ad%97%e7%ac%a6%e7%9a%84%e7%b1%bbsubstring%e6%88%aa%e5%8f%96/</link>
+		<comments>http://www.codezhai.com/code/openresty%e4%bd%bf%e7%94%a8%e7%ac%94%e8%ae%b0-utf8%e4%b8%ad%e6%96%87%e5%ad%97%e7%ac%a6%e7%9a%84%e7%b1%bbsubstring%e6%88%aa%e5%8f%96/#comments</comments>
+		<pubDate>Mon, 11 Aug 2014 08:34:20 +0000</pubDate>
+		<dc:creator><![CDATA[Sophymax]]></dc:creator>
+				<category><![CDATA[Code]]></category>
+		<category><![CDATA[openresty]]></category>
+		<category><![CDATA[web服务器]]></category>
+		<category><![CDATA[优化]]></category>
+		<category><![CDATA[开源]]></category>
+
+		<guid isPermaLink="false">http://www.codezhai.com/?p=1027</guid>
+		<description><![CDATA[大家知道utf8的每个字符并不是定长，所以在处理中文字符截取是会出现很多麻烦，直接substring的话最后一 [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>大家知道utf8的每个字符并不是定长，所以在处理中文字符截取是会出现很多麻烦，直接substring的话最后一个字符一般都会是乱码，而且长度也不对，忽略掉api更健全的语言直接帮我们写了这种函数，至少大部分情况下服务器端的开发工具很少提供这样的api，客户端可能好些，比如<span class='wp_keywordlink'><a href="http://www.codezhai.com/code/openresty_ngx-location-capture_at_least_one_subrequest_should_be_specified/" title="openresty使用笔记3:ngx.location.capture造成的at least one subrequest should be specified错误" target="_blank">lua</a></span>，就没有截取UTF8中文字符的相关函数，我们只能自己写一个：</p>
+<p>取前200个中文字符</p>
+<p>for uchar in string.gfind(string.sub(data.response.docs[i].content,sp), &#8216;[%z\1-\127\194-\244][\128-\191]*&#8217;) do tab[#tab+1] = uchar end<br />
+for j=1,200,1 do<br />
+if tab[j]~=nil then<br />
+endp=endp..tab[j]<br />
+end<br />
+end</p>
+<p>原理就是通过正则来判断每个UTF8字符的结尾，这个utf8结尾标志的秘密就在[%z\1-\127\194-\244][\128-\191]*这个正则里，将每个utf8字符放到table里等待后续截取处理，以此解决UTF8编码不定长的问题，有兴趣的同学可以把它包装成个函数。</p>
+<p>另：在处理ngx.location.capture去请求包含proxy_pass的子请求是，需要关闭gzip，不然会发声莫名其妙的nil错误</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.codezhai.com/code/openresty%e4%bd%bf%e7%94%a8%e7%ac%94%e8%ae%b0-utf8%e4%b8%ad%e6%96%87%e5%ad%97%e7%ac%a6%e7%9a%84%e7%b1%bbsubstring%e6%88%aa%e5%8f%96/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>openresty使用笔记4:全站静态资源copy的一些事儿</title>
+		<link>http://www.codezhai.com/code/openresty-lua-%e5%85%a8%e7%ab%99%e9%9d%99%e6%80%81%e8%b5%84%e6%ba%90copy-%e6%8a%93%e7%ab%99%e7%a8%8b%e5%ba%8f-%e6%95%b4%e7%ab%99%e6%8a%93%e5%8f%96/</link>
+		<comments>http://www.codezhai.com/code/openresty-lua-%e5%85%a8%e7%ab%99%e9%9d%99%e6%80%81%e8%b5%84%e6%ba%90copy-%e6%8a%93%e7%ab%99%e7%a8%8b%e5%ba%8f-%e6%95%b4%e7%ab%99%e6%8a%93%e5%8f%96/#comments</comments>
+		<pubDate>Mon, 11 Aug 2014 07:36:23 +0000</pubDate>
+		<dc:creator><![CDATA[Sophymax]]></dc:creator>
+				<category><![CDATA[Code]]></category>
+		<category><![CDATA[openresty]]></category>
+		<category><![CDATA[web服务器]]></category>
+
+		<guid isPermaLink="false">http://www.codezhai.com/?p=1022</guid>
+		<description><![CDATA[在V2EX发表了个提问： 亲戚的小工厂网站，平时就几个美国客户看，之前这个网站是他们找建站的那些人做的，asp [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>在V2EX发表了个提问：</p>
+<p>亲戚的小工厂<span class='wp_keywordlink'><a href="http://www.codezhai.com/tech/code%E5%AE%85-%E5%BB%BA%E7%AB%99-cdn-%E4%BC%98%E5%8C%96-woff-themes-googleusercontent/" title="Code宅建站日记 2：网站搬迁以及cdn配置，themes.googleusercontent.com下woff的处理，静态资源的中国特色优化" target="_blank">网站</a></span>，平时就几个美国客户看，之前这个网站是他们找建站的那些人做的，asp的，他们自己又不懂，好像做网站的还是中国联通下属的个公司？现 在往上面加个<span class='wp_keywordlink'><a href="http://www.codezhai.com/code/gif-twitter-video/" title="关于GIF,Twitter没告诉过你的事情" target="_blank">图片</a></span>也要加钱，网站一出问题就求爷爷告奶奶的搞不定，所以想帮他们把网站copy下来放到美国的VPS上（既然是美国客户看的网站，服务器放 在广东也就没有意义，老外半分钟打不开），就是把整个网站的以静态资源的形式抓下来整站复制，有没有现成的方案啊，毕竟整站抓取的代码自己写下来还是要费 点时间精力的</p>
+<p>注：asp代码谁都动不了，只好全部按静态资源抓取再做后续处理</p>
+<p>下面是V友提出的些方案，虽然没有一一测试，但在这里都列出来大家用的时候自由选择：SiteSucker、httrack、idm、nomder、webzip、Teleport Pro、wget</p>
+<p>里面sitesucker被提到几次，应该是个不错的工具，但笔者没试过，webzip以前用过，但是有乱码，？和后面一个英文字符被合成了一个中文乱码，原因不明，最终采用的是wget的方案：</p>
+<p>wget -e robots=off -w 1 -x -np -p -m -k -t 1 -X/upload/ http://domain</p>
+<p>很简洁地把整站抓去了下来。</p>
+<p>接着的问题是，静态资源的名字是：xxxx.asp?a=zzzz&amp;b=qqqq 这种形式的，在<span class='wp_keywordlink'><a href="http://www.codezhai.com/code/openresty-memcache-upstream/" title="openresty使用笔记:1、lua借助upstream连接至memcache" target="_blank">nginx</a></span>里直接访问的话会去寻找xxxx.asp，原因是？是个url关键字(URL reserved characters)，需要采取一些措施来规避，经反复测试后的方案是openresty的几句<span class='wp_keywordlink'><a href="http://www.codezhai.com/code/openresty_ngx-location-capture_at_least_one_subrequest_should_be_specified/" title="openresty使用笔记3:ngx.location.capture造成的at least one subrequest should be specified错误" target="_blank">lua</a></span>代码，在nginx的rewrite阶段执行：</p>
+<p>rewrite_by_lua &#8216;<br />
+if string.find(ngx.var.uri,&#8221;.asp&#8221;)~=nil then<br />
+if ngx.var.args~=nil then<br />
+ngx.req.set_uri(ngx.var.uri..&#8221;?&#8221;..ngx.var.args)</p>
+<p>else<br />
+ngx.req.set_uri(ngx.var.uri)<br />
+end<br />
+end<br />
+&#8216;;</p>
+<p>这样就成功访问了文件名为xxxx.asp?a=zzzz&amp;b=qqqq的静态文件。</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.codezhai.com/code/openresty-lua-%e5%85%a8%e7%ab%99%e9%9d%99%e6%80%81%e8%b5%84%e6%ba%90copy-%e6%8a%93%e7%ab%99%e7%a8%8b%e5%ba%8f-%e6%95%b4%e7%ab%99%e6%8a%93%e5%8f%96/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>WIN7-Ubuntu双系统删除Ubuntu流程记录</title>
+		<link>http://www.codezhai.com/code/win7-ubuntu%e5%8f%8c%e7%b3%bb%e7%bb%9f%e5%88%a0%e9%99%a4ubuntu%e6%b5%81%e7%a8%8b%e8%ae%b0%e5%bd%95/</link>
+		<comments>http://www.codezhai.com/code/win7-ubuntu%e5%8f%8c%e7%b3%bb%e7%bb%9f%e5%88%a0%e9%99%a4ubuntu%e6%b5%81%e7%a8%8b%e8%ae%b0%e5%bd%95/#comments</comments>
+		<pubDate>Mon, 11 Aug 2014 03:58:06 +0000</pubDate>
+		<dc:creator><![CDATA[Sophymax]]></dc:creator>
+				<category><![CDATA[Code]]></category>
+		<category><![CDATA[优化]]></category>
+		<category><![CDATA[性能]]></category>
+
+		<guid isPermaLink="false">http://www.codezhai.com/?p=1014</guid>
+		<description><![CDATA[之前是Ubuntu12.04和Windows7双系统，安装时为了性能并没有选择wubi安装方式，同时为了性能没 [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>之前是Ubuntu12.04和Windows7双系统，安装时为了性能并没有选择wubi安装方式，同时为了性能没有给ubuntu使用NTFS分区（方便但影响ubuntu的磁盘效率），重新分了ext系列分区，导致windows的启动依赖于linux的grub，后来ubuntu一直没用，linux服务器管理设置以及交叉编译写脚本验证想法做压力测试一类的有好几个VPS可以用，XShell还有选中复制右键粘贴的贴心功能，故越来越讨厌Ubuntu的图形化界面，12.04升级到14.04后越来越恶心臃肿，一直弹警告窗说有问题提交报告一类的，还天天让我装这装那，遂决定干掉ubuntu，老早就觉得磁盘空间不够用，ubuntu占的90G硬盘也一直空着。干掉ubuntu最重要的就是能正确引导windows，以下是解决方案：</p>
+<p>1.进入win7，<span class='wp_keywordlink'><a href="http://www.codezhai.com/tech/gmail-android-%E5%AE%89%E5%8D%93-google-play-app-billion/" title="Gmail安卓客户端首次突破10亿下载量" target="_blank">下载</a></span>个软件MbrFix，放在C:\windows\system32文件夹中</p>
+<p>2.点击开始》所有程序》附件》命令提示符</p>
+<p>3.在命令提示符中输入MbrFix /drive 0 fixmbr /yes</p>
+<p>4.此时已经修复了MBR，重启电脑后会发现已经没有了linux启动选项，直接进入windows了</p>
+<p>5.在 Win7下，在计算机(Computer)上点右键-&gt;管理(Manage)-&gt;磁盘管理(DiskManagement)：有2个没有卷标名称(卷标名称就是驱动器号，如C:,D:,E:,…)的主分区(PrimaryPartition)就是Ubuntu的分区，删除卷，包括swap之类的全部干掉，空闲磁盘就合并成一个</p>
+<p>6.这时候新建卷有可能会提示“磁盘上没有足够的空间完成操作”，是因为不是动态磁盘不能执行分卷之类的磁盘操作，这时，需要使用“Windows+R”调出运行对话框。输入“Diskpart”，调出命令行，输入“list disk” ，找出没分配的那个disk，比如是0，输入Select Disk 0，选择该disk后输入convert dynamic，将磁盘转换成动态磁盘</p>
+<p>7.这是重新回到磁盘管理，刚才那个空闲的绿色色块代表的分区变成了棕黄色和黑色，这是执行新加卷、格式化之类的就不会有任何阻碍了<img class="alignnone size-full wp-image-1015" src="http://codezhai-static.qiniudn.com/wp-content/uploads/2014/08/QQ图片20140811035432.jpg" alt="QQ图片20140811035432" width="635" height="391" /></p>
+<p>&nbsp;</p>
+<p>最后，新分区后，就大功告成，干掉了Ubuntu，拿出了90G的磁盘空间</p>
+<p><img class="alignnone size-full wp-image-1016" src="http://codezhai-static.qiniudn.com/wp-content/uploads/2014/08/disk.png" alt="disk" width="786" height="152" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>补充：</p>
+<p>以上的方法出了个小事故，重启后无法引导系统，完全重装的话代价是巨大的（一个程序员用了几年的电脑，你懂的），这时候要保持镇定，静下心来分析，审视之前做的那堆操作，感觉应该是是那步动态磁盘的转换导致的，磁盘转换成了动态磁盘，同时，之前的MBR引导信息找不到新的动态磁盘了，朝着这个方向，新下载了个window7 绝对PE工具箱，烧到U盘里，进入PE系统，修复下MBR引导，问题解决，有惊无险。</p>
+<p>重新进入系统后，多了个earlier version of windows，直接进入命令行，执行：bcdedit /delete {ntldr} /f</p>
+<p>这样问题完美解决，上面那个教程正确的做法应该是用动态磁盘分好区后再执行一遍<strong>MbrFix /drive 0 fixmbr /yes</strong>，这样就不会出现后面的事故了</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.codezhai.com/code/win7-ubuntu%e5%8f%8c%e7%b3%bb%e7%bb%9f%e5%88%a0%e9%99%a4ubuntu%e6%b5%81%e7%a8%8b%e8%ae%b0%e5%bd%95/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>谷歌宣布网站加密今后将影响搜索排名</title>
+		<link>http://www.codezhai.com/tech/%e8%b0%b7%e6%ad%8c-%e7%bd%91%e7%ab%99%e5%8a%a0%e5%af%86-%e6%90%9c%e7%b4%a2%e6%8e%92%e5%90%8d-https/</link>
+		<comments>http://www.codezhai.com/tech/%e8%b0%b7%e6%ad%8c-%e7%bd%91%e7%ab%99%e5%8a%a0%e5%af%86-%e6%90%9c%e7%b4%a2%e6%8e%92%e5%90%8d-https/#comments</comments>
+		<pubDate>Sat, 09 Aug 2014 06:07:41 +0000</pubDate>
+		<dc:creator><![CDATA[Sophymax]]></dc:creator>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[google]]></category>
+
+		<guid isPermaLink="false">http://www.codezhai.com/?p=1008</guid>
+		<description><![CDATA[谷歌将开始把网站加密（或HTTPS）作为一种排名信号——该举措应该会促使部分网站开发者作出改变，这些开发者不愿 [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p><img class="alignnone size-full wp-image-1009" src="http://codezhai-static.qiniudn.com/wp-content/uploads/2014/08/google-datacenter-tech-05.jpg" alt="google-datacenter-tech-05" width="640" height="427" /></p>
+<p><span class='wp_keywordlink'><a href="http://www.codezhai.com/code/google-xss-game-appspot-com-%E8%B0%B7%E6%AD%8Cxss%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95%E6%B8%B8%E6%88%8F%E6%94%BB%E7%95%A5/" title="Google’s XSS Game:谷歌XSS漏洞测试游戏xss-game.appspot.com攻略" target="_blank">谷歌</a></span>将开始把<span class='wp_keywordlink'><a href="http://www.codezhai.com/tech/code%E5%AE%85-%E5%BB%BA%E7%AB%99-cdn-%E4%BC%98%E5%8C%96-woff-themes-googleusercontent/" title="Code宅建站日记 2：网站搬迁以及cdn配置，themes.googleusercontent.com下woff的处理，静态资源的中国特色优化" target="_blank">网站</a></span>加密（或HTTPS）作为一种排名信号——该举措应该会促使部分网站<span class='wp_keywordlink'><a href="http://www.codezhai.com/tech/banned-for-life-google-android/" title="终生封杀:开发安卓应用的潜在风险,谷歌严厉的处罚政策" target="_blank">开发者</a></span>作出改变，这些开发者不愿加强<span class='wp_keywordlink'><a href="http://www.codezhai.com/code/clickjacking-amazon-com/" title="在Amazon.com发现的一个clickjacking安全漏洞" target="_blank">安全</a></span>措施或者争议自己的网站是否具有“足够”重要性而要进行加密。谷歌称，一开始，HTTPS将只是一种轻量级的信号，影响不到1%的全球<span class='wp_keywordlink'><a href="http://www.acgzhai.net" title="ACG宅-游戏动漫搜索引擎" target="_blank">搜索</a></span>。</p>
+<p>这意味着，新信号的权重不及其他因素，如内容的质量，因为谷歌希望为网站管理员提供时间使他们转换至HTTPS。</p>
+<p>不过，随着时间过去，加密对搜索排名的影响将加强，因为该公司将更多重要性放到网站安全上。</p>
+<p>谷歌还承诺发布一系列围绕安全传输层协议（TLS）的最佳做法，因此网站开发者可以更好地理解他们需要做什么才能执行这项技术以及他们应该避免什么 错误。这些提示将包括各种东西，如需要什么类型的证书，如何利用相对URL以获得位于相同安全域的资源，有关允许网站索引的最佳做法等。</p>
+<p>此外，谷歌表示，网站开发者可以利用Qualys Lab工具测试目前的HTTPS网站，并且可以将进一步的问题引导至谷歌的网站管理员帮助论坛（WebmasterHelp Forums），该公司已经在这个论坛上与更广泛的社区进行积极磋商。</p>
+<p>这则消息吸引了来自网站开发者以及搜索引擎<span class='wp_keywordlink'><a href="http://www.codezhai.com/code/openresty-%E7%BC%96%E8%AF%91-%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93-mcrypt-lua/" title="openresty使用笔记:2、编写高速加密动态库之libmcrypt的lua插件化" target="_blank">优化</a></span>行业人士的很多反馈——例如，谷歌自己的博客文章已经吸引了接近1000条评论。在很大程度上，该社区似乎支持这种调整，或者至少承认她们认为类似的事情正在推进之中并且对此不感到惊讶。</p>
+<p>近几个月，谷歌一直采取措施以更好地保护自己的流量，如加密服务器之间的流量。<span class='wp_keywordlink'><a href="http://www.codezhai.com/tech/gmail-android-%E5%AE%89%E5%8D%93-google-play-app-billion/" title="Gmail安卓客户端首次突破10亿下载量" target="_blank">gmail</a></span>现在一直都使用加密的HTTPS连接，因而邮件在从消费者的机器转移到谷歌的数据中心的过程中不会被窃取窥探。</p>
+<p>虽然多年来，HTTPS和网站加密一直是安全社区一种最好的做法，但是有关国家安全局窃听用户以直接获取信息的爆料，促使很多科技公司考虑加强自己的安全措施。例如，雅虎也在去年11月宣布计划对其数据中心流量进行加密。</p>
+<p>现在，谷歌正帮助推动网络世界其他地方采取同样的措施。</p>
+<p>（翻译：何文伟）<br />
+转自TechCrunch</p>
+<p>http://techcrunch.com/2014/08/07/<span class='wp_keywordlink'><a href="http://www.codezhai.com/tech/google-%E6%90%9C%E7%B4%A2%E7%BB%93%E6%9E%9C%E5%B9%B2%E9%A2%84-%E9%9A%90%E7%A7%81/" title="谷歌接收12,000份欧盟公民删除隐私搜索结果的请求" target="_blank">google</a></span>-says-website-encryption-or-lack-thereof-will-now-influence-search-rankings/?ncid=rss</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.codezhai.com/tech/%e8%b0%b7%e6%ad%8c-%e7%bd%91%e7%ab%99%e5%8a%a0%e5%af%86-%e6%90%9c%e7%b4%a2%e6%8e%92%e5%90%8d-https/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>微软硬件的又一失败？浅谈Surface与它的生命线</title>
+		<link>http://www.codezhai.com/tech/surface-microsoft/</link>
+		<comments>http://www.codezhai.com/tech/surface-microsoft/#comments</comments>
+		<pubDate>Sat, 09 Aug 2014 06:01:36 +0000</pubDate>
+		<dc:creator><![CDATA[Sophymax]]></dc:creator>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[硬件]]></category>
+
+		<guid isPermaLink="false">http://www.codezhai.com/?p=1005</guid>
+		<description><![CDATA[最近微软向全球多个国家和地区发布了其最新的混合本Surface Pro 3，随之而来的各种有关这条产品线盈利前 [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p><img class="alignnone size-full wp-image-1006" src="http://codezhai-static.qiniudn.com/wp-content/uploads/2014/08/surface.png" alt="surface" width="640" height="234" /></p>
+<p>最近微软向全球多个国家和地区发布了其最新的混合本Surface Pro 3，随之而来的各种有关这条产品线盈利前景的评论读起来也是饶有趣味。人人都知道Surface从开始到现在就没给微软赚回过一毛钱，但了解为什么造成这种局面，以及情况会如何发展才是更重要的事。</p>
+<p>Verge的编辑汤姆·沃伦（Tom Warren）很质疑Surface的未来，他甚至讽刺说Surface和它逝去的老前辈Zune是一丘之貉，它们有着共同的特点——虽说产品一直在改进，但用户就是不买账。</p>
+<p>在下文中，我们将从Surface 1代开始，看看微软对它的期望以及现在的经营情况，然后与微软硬件部门其他项目的状况做个比较，最后试着得出结论。</p>
+<p><b>“实在的生意”</b></p>
+<p>我第一次见到Surface还是在2012年的雷德蒙德微软总部，当时微软告诉我和其他新闻界同行说，硬件是一桩“实在的生意”。言下之意就是：他们做硬件不是为了玩，而是看到了硬件<span class='wp_keywordlink'><a href="http://www.codezhai.com/tech/%e8%85%be%e8%ae%af-%e6%8a%84%e8%a2%ad-%e6%af%95%e4%b8%9a%e8%ae%be%e8%ae%a1-%e6%b8%b8%e6%88%8f/" title="清华一学生毕业设计游戏遭腾讯应用市场抄袭，腾讯应用审核团队监守自盗" target="_blank">市场</a></span>的巨大潜力。</p>
+<p>时隔一年，微软准备推出Surface的第二代产品：Surface 2和Surface Pro 2。于是我又去了雷德蒙德，对Surface团队进行了专访，也第一次试用了他们的新产品。</p>
+<p>采访中，Surface部门总经理布莱恩·豪尔（Brian Hall）再次强调了硬件业务的重要性，其中他有一段话很值得注意：</p>
+<p><i>“我们开发Surface</i><i>，是把它当做真正的生意严肃对待的。同时它也是一项长期业务，这意味着在不同的时间点，我们对Surface</i><i>的战略有不同的安排。 </i></p>
+<p><i> </i></p>
+<p><i>我们把[</i><i>第一代Surface RT</i><i>的]</i><i>价格降到了349</i><i>美元，就是为了让更多人用上Surface</i><i>，因为培养用户就是最有效的战略。喜欢用Surface</i><i>的人越多，它的口碑就传得越广。对于我们来说，首先要种下种子，然后才能浇水、施肥。</i></p>
+<p><i> </i></p>
+<p><i>我们希望Surface</i><i>产品线足够强大。虽然消费者首先考虑的是价格，但我认为他们会看到每个价格区间里的Surface</i><i>产品都是物超所值的，它们是真正的生产力工具。”</i></p>
+<p>这就是微软对Surface的期望，彼时SurfacePro 3和现在已经搁置的传说中的小屏SurfaceMini尚在开发中。</p>
+<p><b>亏损不断 </b></p>
+<p>就在前几天，《ComputerWorld》（计算机世界）详细分析了微软的财报，通过对比公开的报表数据算出了Surface的营收成本（这是微软在财报中没有具体明示的），从而得出了Surface给微软带来的真实收益。</p>
+<p>这“真实收益”看上去相当惨烈：“Surface产品线一共给微软带来了约17.3亿美元（13财年亏损10.49亿美元，14财年亏损6.76亿 美元）的损失”。在实际情况里，业绩应该比计算出来的更糟，因为报表里的“营收成本”还没有把一些费用计算在内，比如广告，这可是微软给Surface砸 钱最狠的地方。</p>
+<p>《ComputerWorld》的统计如下图，即使不看实际亏损，这数据也非常值得玩味：<img class="alignnone size-full wp-image-26782" src="http://files.techcrunch.cn/2014/08/screen-shot-2014-08-06-at-3-51-55-pm.png?w=528&amp;h=322" alt="screen-shot-2014-08-06-at-3-51-55-pm" width="528" height="322" /></p>
+<p>很明显毛利是增长的，即使营收成本在第二年继续增长，但营收本身的增幅更大。</p>
+<p>那么，微软自己是怎么看待Surface造成的亏损呢？他们也无法忍受吗？这里我们得把微软分成鲍尔默的微软和纳德拉的微软：鲍尔默更愿意不惜成本 地推广硬件，这点从他收购诺基亚到不遗余力宣传Surface就可以看出来。相对的，主打“生产力与平台”的纳德拉有点像微软硬件的后妈，并没有前任那么 大热情。但即使这样，即使这位微软新任CEO一直对公司收购诺基亚颇有微词，至少到现在也没听说他有放弃Surface产品线的打算。</p>
+<p>而且，坦白地讲，微软的硬件部门并不是分散的，比如他们为Windows Phone<span class='wp_keywordlink'><a href="http://www.codezhai.com/tech/banned-for-life-google-android/" title="终生封杀:开发安卓应用的潜在风险,谷歌严厉的处罚政策" target="_blank">手机</a></span>投入的人力财力和Surface几乎没有大的区别。因此，我们可以从一些相似的角度来看待它们。</p>
+<p>无论是手机还是平板，微软的目标都是为它的软件平台提供最好的第一手硬件设备。他们的软件平台已经没有以前那么巨大的优势了，当然它仍然值得公司投入巨资维持下去，直到重新回到高点。</p>
+<p><b>扫清障碍</b></p>
+<p>Surface这条产品线在短期内是不可能被砍掉的。我们需要了解以下事实：</p>
+<p>1.         历史证明，微软对赔钱的产品有着一贯的耐心。必应自09年推出就一直在赔钱，微软预计这款产品到2016财年才能实现盈利， 收购诺基亚得来的手机业务也得到那时才能赚钱。微软愿意为必应砸上百亿美元的水漂，愿意为诺基亚手机近十亿的亏损买单（更好玩的是，这近十亿美元的黑洞还 是微软花七十亿美元买来的），这么一对比，Surface的问题简直就是毛毛雨了。</p>
+<p>2.         微软把诺基亚的大部分硬件资产一手揽下，也就顺势把自己推到了无法后退的境地。当然他们这么做只是为了给Windows提供 一个官方的硬件平台——但生意就是把花出去的钱收回来，这并不容易。如果微软为了止住亏损就放弃Surface，那么同理他们也该放弃手机业务。毕竟两个 硬件项目都是为了支持Windows平台开设的，而且两个项目也都在赔钱，如果只砍掉一支，从战略角度来看怎么都说不通。</p>
+<p>3.         总结下来，目前微软的硬件项目仍有收支平衡的希望，而且它对微软软件服务的扶持也是立竿见影的，所以微软在短期内仍然会全力推动硬件业务。</p>
+<p>在这个前提下，如果Surface还是无法增加营收并减少亏损，微软还是有可能提前结束它的生命。当然，这情况适用于他们的任何产品。</p>
+<p>因此，如果Surface Pro 3能够帮助提升公司业绩，那么Surface产品线应该就能站稳脚跟。</p>
+<p><b>展望未来 </b></p>
+<p><i>“我们开发Surface</i><i>，是把它当做真正的生意严肃对待的。同时它也是一项长期业务，这意味着在不同的时间点，我们对Surface</i><i>的战略有不同的安排。”</i>看完Surface的财务表现，再回到一年前的这句话，我认为微软在那时似乎已经对现在的情况做好了准备，并提前制定了多年的发展计划。我认为只要亏损不要超过底线，那么这一计划应该是可行的。</p>
+<p>清仓Surface RT造成的9亿美元损失，在正式的金融术语叫做减记，用通俗的话讲就是一场灾难。不过还好，除过Surface Mini被搁置（Surface Mini的<span class='wp_keywordlink'><a href="http://www.codezhai.com/tech/logo-brand-%E9%AB%98%E8%BE%A8%E8%AF%86%E5%BA%A6/" title="一个完美logo的制作过程-制作商标时要问自己的6个问题" target="_blank">设计</a></span>和制造费用也计算在本季的营收成本当中），这种情况再没有发生过。</p>
+<p>两个月之后我们就会得到新一代Surface的营收情况。Surface Pro 3在这一财季和接下来假日季的表现将会决定市场和微软对它的定位：究竟它会延续前两代产品的不温不火的态势，还是会打一场漂亮的翻身仗，我们拭目以待。</p>
+<p>（译：王博源）<br />
+转自TechCrunch</p>
+<p>http://techcrunch.com/2014/08/07/microsofts-surface-and-the-fine-line-between-investment-and-loss/?ncid=rss</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.codezhai.com/tech/surface-microsoft/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>脑补神字体-8×8 ドット日本語フォント「美咲フォント」</title>
+		<link>http://www.codezhai.com/code/8x8-font/</link>
+		<comments>http://www.codezhai.com/code/8x8-font/#comments</comments>
+		<pubDate>Tue, 05 Aug 2014 03:40:23 +0000</pubDate>
+		<dc:creator><![CDATA[Sophymax]]></dc:creator>
+				<category><![CDATA[Code]]></category>
+		<category><![CDATA[优化]]></category>
+
+		<guid isPermaLink="false">http://www.codezhai.com/?p=999</guid>
+		<description><![CDATA[一个日本人制作的神字体，用8&#215;8像素制作出大部分的中文字，其实是7&#215;7，因为作者留了一个空 [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p><em>一个日本人制作的神字体，用8&#215;8像素制作出大部分的中文字，其实是7&#215;7，因为作者留了一个空白像素做分割，充分利用了人类的脑补功能……</em></p>
+<p>以下是简介，网址为http://www.geocities.jp/littlimi/misaki.htm</p>
+<p>PC-E500 用 第一水準のみフォント (MSKGJIS1.FNT、MSKMJIS1.FNT) で、<br />
+中身の文字の範囲が大きくずれてしまっていることが分かりました。<br />
+次バージョンで修正しますが、差し当たり periodβ11 のものをお使いください。</p>
+<p>PC-E500 用以外の形式については問題ありません。</p>
+<h2 id="outline">概要</h2>
+<p>美咲フォントは 8×8 ドットの日本語ビットマップフォントです。<br />
+JIS 第一・第二水準をサポートしています。<br />
+一部の記号を除いた全ての文字は 7×7 ドットの範囲に収まっているため、<br />
+文字同士を隣接させても行間・字間が確保できます。</p>
+<h2 id="sample">サンプル画像</h2>
+<p>美咲ゴシック (倍角画像)<br />
+<img src="http://www.geocities.jp/littlimi/img/font/_misaki_gothic.png" alt="美咲ゴシック" width="640" height="208" /><br />
+美咲明朝 (倍角画像)<br />
+<img src="http://www.geocities.jp/littlimi/img/font/_misaki_mincho.png" alt="美咲明朝" width="640" height="208" /><br />
+(原文: 組見本用創作文『問わずがたりの洋酒外史』)</p>
+<p>サンプルに使用しているバージョンは 2012-06-03 版です。<br />
+美咲明朝は美咲ゴシックの非漢字部を明朝風のフォントに差し替えたものです。</p>
+<h2 id="license">ライセンス</h2>
+<p>本フォントはフリーソフトウェアです。<br />
+ライセンスは font ページの ライセンス の項をご覧ください。</p>
+<p>[2013-03-20]<br />
+使用している M<sup>+</sup> FONTS ライセンスの修正を取り込みました。<br />
+もちろん自由なライセンスであることに変わりはありません。<br />
+(参考 : M<sup>+</sup> LOG &#8211; M<sup>+</sup> TESTFLIGHT 054)</p>
+<p>美咲フォント 2012-06-03 版 までのドキュメントに記載されているライセンスは<br />
+修正前のものですが、今後公開する版では修正後のものに差し替える予定です。</p>
+<h2 id="download">ダウンロード</h2>
+<h3>美咲フォント 2012-06-03 版</h3>
+<ul class="top">
+<li id="E500">PC-E500 SCRNJPN.FNT 形式 (オリジナル)<br />
+misaki_e500_2012-06-03.zip (188,090 bytes)</li>
+<li id="BDF">X11 BDF 形式<br />
+misaki_bdf_2012-06-03.tar.gz (210,238 bytes)</li>
+<li id="TTF">TrueType 形式<br />
+misaki_ttf_2012-06-03.zip (826,044 bytes)</li>
+<li id="Ruputer">Ruputer ELISAR10.FNT 形式<br />
+misaki_ruputer_2012-06-03.zip (74,422 bytes)</li>
+<li id="FONTX">FONTX2 形式<br />
+misaki_fontx_2012-06-03.zip (82,207 bytes)</li>
+<li id="PNG">PNG 形式 (ビットマップ画像)<br />
+misaki_png_2012-06-03.zip (114,366 bytes)</li>
+</ul>
+<h2 id="background">制作の経緯</h2>
+<p>美咲フォントは PC-E500 系ポケコンの SCRNJPN<sup>*1</sup> 用に作られました。<br />
+SCRNJPN で使用されるフォントは恵梨沙フォント<sup>*2</sup> ですが、<br />
+8×8 ドット一杯に作られているためにどうしても<br />
+文字同士の接触が発生してしまいます。<br />
+特に 60Columns<sup>*3</sup> 使用時には文字が上下左右で接触し、<br />
+判読に苦労する状況が多々あります。</p>
+<p>自分は E500 上で日本語が扱える状態で満足だったのですが、<br />
+その環境を見た美咲 礼威氏から<br />
+「7×7 ドット内に文字を収めれば字間ができて読みやすくなるのでは」<br />
+との発言を受け、試作することにしました。<br />
+実際に接触のない環境ができていくに連れてその有用性を実感し、<br />
+K5x7(仮) (現・k6x8) での経験も生かして<br />
+JIS第一・第二水準全文字の作成に踏み切りました。</p>
+<p>フォント名は制作のきっかけとなった美咲 礼威氏からいただきました。<br />
+制作に当たり、字形の評価 (所謂「一般人の目」) や技術的な助言など<br />
+色々な面でお世話になっています。この場を借りてお礼申し上げます。</p>
+<ul>
+<li id="annotation1">[*1] PC-E500 用日本語表示ドライバ。Nmasuさん作。</li>
+<li id="annotation2">[*2] 8×8 ドットの日本語ビットマップフォント。恵梨沙フォント PJ 作。</li>
+<li id="annotation3">[*3] PC-E500 用 60 桁表示ドライバ。溝端大介さん作。</li>
+</ul>
+<p><img src="http://www.geocities.jp/littlimi/img/font/misaki_u6000.jpg" alt="" /></p>
+<h2 id="history">制作履歴</h2>
+<dl>
+<dt>[2013-03-20]</dt>
+<dd>M+ FONTS ライセンスの修正を取込み</dd>
+<dt>[2012-06-03]</dt>
+<dd>正式公開初版</dd>
+<dt>[2012-03-31]</dt>
+<dd>各種ファイル名、ドキュメントの見直し</dd>
+<dd>BDF 版以外のアーカイブ形式を zip に変更</dd>
+<dd>(TTF) アウトライン版の正式採用、Mac におそらく対応</dd>
+<dd>(FONTX) 4X8.FNT の 00h～1Fh に DOS/V 罫線を追加</dd>
+<dt>[2011-03-08]</dt>
+<dd>(TTF-Outline) 生成手順の改善に伴い periodβ11 作成・公開</dd>
+<dt>[2010-03-07]</dt>
+<dd>(BDF) FOUNDRY, POINT_SIZE, AVERAGE_WIDTH, SWIDTH, XLFD, 各ファイル名の変更</dd>
+<dt>[2006-10-01]</dt>
+<dd>(TTF-Outline) 試作版配布開始</dd>
+<dt>[2006-04-01]</dt>
+<dd>(PNG) 配布開始</dd>
+<dt>[2006-03-26]</dt>
+<dd>(E500) 13 区追加版・軽量版 (第一水準のみ) 同梱開始<br />
+フォントファイルの命名規則変更</dd>
+<dd>(BDF) 美咲明朝の配布形態をゴシックとの差分から実ファイル同梱へ<br />
+BITMAP の記述方法を修正 (16 進 4 桁から 2 桁へ)</dd>
+<dd>(FONTX) 配布再開</dd>
+<dt>[2005-07-20]</dt>
+<dd>アーカイブの命名規則を変更</dd>
+<dd>(TTF・BDF) 著作権表記を変更</dd>
+<dd>(BDF) 1 バイト文字フォントのファイル名をそれぞれ 4&#215;8.bdf, 4x8_8859.bdf に</dd>
+<dt>[2004-09-12]</dt>
+<dd>(TTF・BDF) 13区の文字追加</dd>
+<dt>[2004-06-24]</dt>
+<dd>フォントの名称変更<br />
+(美咲フォントを美咲ゴシック、ファミリーの総称を美咲フォントに)</dd>
+<dt>[2004-05-09]</dt>
+<dd>美咲明朝の同梱開始</dd>
+<dt>[2004-04-19]</dt>
+<dd>半濁点の処理を変更</dd>
+<dt>[2004-04-11]</dt>
+<dd>3 フォント同時編集ツール「&#8221;SCRNJPN.FNT&#8221; Editor」完成</dd>
+<dt>[2004-02-09]</dt>
+<dd>濁点の処理を変更</dd>
+<dt>[2003-09-21]</dt>
+<dd>制作履歴の日付ミスを修正 (美咲氏 Thanx!)</dd>
+<dt>[2003-06-04]</dt>
+<dd>ライセンスに関する記述を変更</dd>
+<dt>[2003-05-04]</dt>
+<dd>(BDF) 3x7_8859.bdf の CHARS の値を修正</dd>
+<dd>(BDF) 3x7_8859.bdf のファイル名が 3X7_8859.bdf になっていたのを修正</dd>
+<dt>[2003-03-26]</dt>
+<dd>マニュアルをフォントの説明と各形式の説明に分離</dd>
+<dt>[2003-01-02]</dt>
+<dd>各部のフォント間での統一化作業を本格的に開始</dd>
+<dt>[2002-06-10]</dt>
+<dd>JIS X 0208-1983 での文字の変更、JIS X 0208-1990 での文字の追加に対応</dd>
+<dt>[2002-06-06]</dt>
+<dd>未定義文字のフォントを3×3の■に</dd>
+<dt>[2002-06-01]</dt>
+<dd>第二水準完成</dd>
+<dt>[2002-05-22]</dt>
+<dd>制作再開</dd>
+<dt>[2002-05-21]</dt>
+<dd>フォント作成専用ツール「&#8217;SCRNJPN.FNT&#8217; Editor」完成</dd>
+<dt>[2002-05-11]</dt>
+<dd>E650 暴走により第二水準中の 600 文字近くが消滅→制作中断</dd>
+<dt>[2002-04-初]</dt>
+<dd>第一水準完成</dd>
+<dt>[2002-03-中]</dt>
+<dd>制作開始</dd>
+</dl>
+]]></content:encoded>
+			<wfw:commentRss>http://www.codezhai.com/code/8x8-font/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>如何优雅地查出微信里谁删了你？</title>
+		<link>http://www.codezhai.com/tech/%e5%a6%82%e4%bd%95%e4%bc%98%e9%9b%85%e5%9c%b0%e6%9f%a5%e5%87%ba%e5%be%ae%e4%bf%a1%e9%87%8c%e8%b0%81%e5%88%a0%e4%ba%86%e4%bd%a0%ef%bc%9f/</link>
+		<comments>http://www.codezhai.com/tech/%e5%a6%82%e4%bd%95%e4%bc%98%e9%9b%85%e5%9c%b0%e6%9f%a5%e5%87%ba%e5%be%ae%e4%bf%a1%e9%87%8c%e8%b0%81%e5%88%a0%e4%ba%86%e4%bd%a0%ef%bc%9f/#comments</comments>
+		<pubDate>Sun, 03 Aug 2014 07:27:58 +0000</pubDate>
+		<dc:creator><![CDATA[Sophymax]]></dc:creator>
+				<category><![CDATA[Tech]]></category>
+		<category><![CDATA[app]]></category>
+		<category><![CDATA[用户体验]]></category>
+
+		<guid isPermaLink="false">http://www.codezhai.com/?p=997</guid>
+		<description><![CDATA[最近，全党、全军乃至全国各族微信网民纷纷表示遭受了一种名为“好友测试不用回”的病毒式骚扰。 发起这个活动的人， [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>最近，全党、全军乃至全国各族微信网民纷纷表示遭受了一种名为“好友测试不用回”的病毒式骚扰。</p>
+<p>发起这个活动的人，是希望通过群发消息的方式，来测试是否有好友将其删除了。</p>
+<p>但是结果呢？无数人在朋友圈里说：<strong>本来没想删的，看到发这个的就马上就删了</strong>。 那么师父提示一下发过这种测试群消息的人，为了稳妥起见，应该再发一轮：“测试是否有好友因好友删除测试而把我删除”，第二轮完事以后，还隔两天再测一下 是否有人不堪第二轮的好友删除测试而将我删除………循环往复，直到好友将自己删光为止，空虚寂寞冷地孤家寡人过七夕……</p>
+<p>&nbsp;</p>
+<p>师父说过，这种方法既愚蠢又野蛮，实在是下下之策。今天师父在好友郑忠华的提醒下，教大家如何优雅地、智慧的、不骚扰别人的情况下识别出来哪些人将你从好友中删除了，本方法绝对可靠，安卓、iPhone亲测效果好到爆，马上睁大眼睛看着吧：</p>
+<p>&nbsp;</p>
+<blockquote><p>1. 先点击微信页面右上角的加号，选择“发起群聊”</p></blockquote>
+<p>&nbsp;</p>
+<blockquote><p>2. 选择一组你想测试的好友。大多数情况下是这样的，您选择的好友里，有的删掉了你，有的没有，那么建立群聊之后的效果就是这样，蓝色字体显示的人就是已经将 你删除的人。（此方法仅限建40人群有效，也就是说一次最多验证39人，所以几千人的大V想试的话得花点功夫了。）</p></blockquote>
+<p>&nbsp;</p>
+<blockquote><p>3. 这样呢，被测试的好友就不知不觉地被测试了是否将你删除。在群里不要说一句话（千万不要说话，否则优雅荡然无存），悄悄点击右上角，拖到最下方，点击<strong>【删除并退出】</strong>，（iPhone用户可以返回聊天主界面，向右滑动，点击红色<strong>【删除】</strong>即可）</p></blockquote>
+<p>&nbsp;</p>
+<blockquote><p>4. 把那些被提示出来需要验证的人默默删除掉，双方无声中上演了一出“后会无期”，彼此保持了风度和优雅，悄悄将仇恨埋藏心底…………</p></blockquote>
+<p>&nbsp;</p>
+<p>如果你按照“好友验证1.0“的愚蠢做法群发过消息以后，你再次进行本轮测试的时候显示效果可能是这样的，【创建群聊失败】，为什么呢？师父恭喜你，这里面所有的人都已经把你删除好友啦，哈哈哈哈。</p>
+<p>&nbsp;</p>
+<p>如果你新建聊天的时候出现下列情况，即一发出邀请有人拒绝加入群聊，师父就坦白告诉你这个噩耗吧，<strong>对方把你拉黑名单了！</strong></p>
+<p>&nbsp;</p>
+<blockquote><p>最后，师父要说，好友验证是一种既无知又无聊还无自信的行为，如果你非要做，就请做得优雅一点，千万不要来骚扰我，如果师父发完这条消息，还有收到任何人发过来的野蛮版的好友验证，一律删无赦！</p></blockquote>
+<p><strong>这条消息请大力转发到你的朋友圈里提醒你那些小伙伴吧，这条图文可以有效帮你避免今后再收到大量“好友测试不用回”，不用谢，我叫唐三藏AI（yourshifu）！</strong></p>
+<p>转自知乎专栏：http://zhuanlan.zhihu.com/iamyourshifu/19814901</p>
+]]></content:encoded>
+			<wfw:commentRss>http://www.codezhai.com/tech/%e5%a6%82%e4%bd%95%e4%bc%98%e9%9b%85%e5%9c%b0%e6%9f%a5%e5%87%ba%e5%be%ae%e4%bf%a1%e9%87%8c%e8%b0%81%e5%88%a0%e4%ba%86%e4%bd%a0%ef%bc%9f/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>
+
+<!-- Dynamic page generated in 0.852 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2014-08-25 02:06:39 -->

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="zh-CN">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="zh-CN">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html lang="zh-CN">
+<!--<![endif]-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>openresty使用笔记4:全站静态资源copy的一些事儿 | Code宅</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="http://www.codezhai.com/xmlrpc.php" />
+<!--[if lt IE 9]>
+<script src="http://codezhai-static.qiniudn.com/wp-content/themes/iconic-one/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+
+<!-- BEGIN Metadata added by Add-Meta-Tags WordPress plugin -->
+<meta name="description" content="openresty使用笔记4：全站静态资源copy的一些事儿" />
+<meta name="keywords" content="code宅,codezhai,技术宅,科技,开源,it,代码,互联网,程序,开发者,创业,产品,科技, openresty,全站静态资源,copy,抓站程序,整站抓取,lua,rewrite,url reserved characters,url转义字符" />
+<!-- END Metadata added by Add-Meta-Tags WordPress plugin -->
+
+<link rel="alternate" type="application/rss+xml" title="Code宅 &raquo; Feed" href="http://www.codezhai.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Code宅 &raquo; 评论Feed" href="http://www.codezhai.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Code宅 &raquo; openresty使用笔记4:全站静态资源copy的一些事儿评论Feed" href="http://www.codezhai.com/code/openresty-lua-%e5%85%a8%e7%ab%99%e9%9d%99%e6%80%81%e8%b5%84%e6%ba%90copy-%e6%8a%93%e7%ab%99%e7%a8%8b%e5%ba%8f-%e6%95%b4%e7%ab%99%e6%8a%93%e5%8f%96/feed/" />
+<link rel='stylesheet' id='dashicons-css'  href='http://codezhai-static.qiniudn.com/wp-includes/css/dashicons.min.css?ver=3.9.1' type='text/css' media='all' />
+<link rel='stylesheet' id='admin-bar-css'  href='http://codezhai-static.qiniudn.com/wp-includes/css/admin-bar.min.css?ver=3.9.1' type='text/css' media='all' />
+<link rel='stylesheet' id='themonic-style-css'  href='http://codezhai-static.qiniudn.com/wp-content/themes/iconic-one/style.css?ver=3.9.1' type='text/css' media='all' />
+<link rel='stylesheet' id='custom-style-css'  href='http://codezhai-static.qiniudn.com/wp-content/themes/iconic-one/custom.css?ver=3.9.1' type='text/css' media='all' />
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='themonic-ie-css'  href='http://codezhai-static.qiniudn.com/wp-content/themes/iconic-one/css/ie.css?ver=20130305' type='text/css' media='all' />
+<![endif]-->
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.codezhai.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://codezhai-static.qiniudn.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='WIN7-Ubuntu双系统删除Ubuntu流程记录' href='http://www.codezhai.com/code/win7-ubuntu%e5%8f%8c%e7%b3%bb%e7%bb%9f%e5%88%a0%e9%99%a4ubuntu%e6%b5%81%e7%a8%8b%e8%ae%b0%e5%bd%95/' />
+<meta name="generator" content="WordPress 3.9.1" />
+<link rel='canonical' href='http://www.codezhai.com/code/openresty-lua-%e5%85%a8%e7%ab%99%e9%9d%99%e6%80%81%e8%b5%84%e6%ba%90copy-%e6%8a%93%e7%ab%99%e7%a8%8b%e5%ba%8f-%e6%95%b4%e7%ab%99%e6%8a%93%e5%8f%96/' />
+<link rel='shortlink' href='http://www.codezhai.com/?p=1022' />
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #ffffff; }
+</style>
+<style type="text/css" media="print">#wpadminbar { display:none; }</style>
+<style type="text/css" media="screen">
+	html { margin-top: 32px !important; }
+	* html body { margin-top: 32px !important; }
+	@media screen and ( max-width: 782px ) {
+		html { margin-top: 46px !important; }
+		* html body { margin-top: 46px !important; }
+	}
+</style>
+<meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes"/>
+</head>
+<body class="single single-post postid-1022 single-format-standard logged-in admin-bar no-customize-support custom-background custom-background-white single-author">
+<div id="page" class="hfeed site">
+	<header id="masthead" class="site-header" role="banner">
+					<hgroup>
+			<a href="http://www.codezhai.com/" title="Code宅" rel="home">Code宅</a>
+				<!--<br .../> <a class="site-description">--><?//php bloginfo( 'description' ); ?><!--</a>-->
+		</hgroup>
+		
+		
+		<nav id="site-navigation" class="themonic-nav" role="navigation">
+			<a class="assistive-text" href="#content" title="Skip to content">Skip to content</a>
+			<div class="menu-%e8%8f%9c%e5%8d%951-container"><ul id="menu-top" class="nav-menu"><li id="menu-item-10" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10"><a href="http://www.codezhai.com/category/tech/">杂闻</a></li>
+<li id="menu-item-108" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-108"><a href="http://www.codezhai.com/category/code/">码字</a></li>
+</ul></div>
+
+		</nav><!-- #site-navigation -->
+		<div class="clear"></div>
+	</header><!-- #masthead -->
+
+	<div id="main" class="wrapper">	<div id="primary" class="site-content">
+		<div id="content" role="main">
+
+			
+					<article id="post-1022" class="post-1022 post type-post status-publish format-standard hentry category-code tag-openresty tag-web" style="padding:0px;">
+
+		
+
+		<header class="entry-header"  style="font-size:28px;">
+						<h1 class="entry-title">openresty使用笔记4:全站静态资源copy的一些事儿</h1>
+									
+		
+						
+			</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p>在V2EX发表了个提问：</p>
+<p>亲戚的小工厂<span class='wp_keywordlink'><a href="http://www.codezhai.com/tech/code%E5%AE%85-%E5%BB%BA%E7%AB%99-cdn-%E4%BC%98%E5%8C%96-woff-themes-googleusercontent/" title="Code宅建站日记 2：网站搬迁以及cdn配置，themes.googleusercontent.com下woff的处理，静态资源的中国特色优化" target="_blank">网站</a></span>，平时就几个美国客户看，之前这个网站是他们找建站的那些人做的，asp的，他们自己又不懂，好像做网站的还是中国联通下属的个公司？现 在往上面加个<span class='wp_keywordlink'><a href="http://www.codezhai.com/code/gif-twitter-video/" title="关于GIF,Twitter没告诉过你的事情" target="_blank">图片</a></span>也要加钱，网站一出问题就求爷爷告奶奶的搞不定，所以想帮他们把网站copy下来放到美国的VPS上（既然是美国客户看的网站，服务器放 在广东也就没有意义，老外半分钟打不开），就是把整个网站的以静态资源的形式抓下来整站复制，有没有现成的方案啊，毕竟整站抓取的代码自己写下来还是要费 点时间精力的</p>
+<p>注：asp代码谁都动不了，只好全部按静态资源抓取再做后续处理</p>
+<p>下面是V友提出的些方案，虽然没有一一测试，但在这里都列出来大家用的时候自由选择：SiteSucker、httrack、idm、nomder、webzip、Teleport Pro、wget</p>
+<p>里面sitesucker被提到几次，应该是个不错的工具，但笔者没试过，webzip以前用过，但是有乱码，？和后面一个英文字符被合成了一个中文乱码，原因不明，最终采用的是wget的方案：</p>
+<p>wget -e robots=off -w 1 -x -np -p -m -k -t 1 -X/upload/ http://domain</p>
+<p>很简洁地把整站抓去了下来。</p>
+<p>接着的问题是，静态资源的名字是：xxxx.asp?a=zzzz&amp;b=qqqq 这种形式的，在<span class='wp_keywordlink'><a href="http://www.codezhai.com/code/openresty-memcache-upstream/" title="openresty使用笔记:1、lua借助upstream连接至memcache" target="_blank">nginx</a></span>里直接访问的话会去寻找xxxx.asp，原因是？是个url关键字(URL reserved characters)，需要采取一些措施来规避，经反复测试后的方案是openresty的几句<span class='wp_keywordlink'><a href="http://www.codezhai.com/code/openresty_ngx-location-capture_at_least_one_subrequest_should_be_specified/" title="openresty使用笔记3:ngx.location.capture造成的at least one subrequest should be specified错误" target="_blank">lua</a></span>代码，在nginx的rewrite阶段执行：</p>
+<p>rewrite_by_lua &#8216;<br />
+if string.find(ngx.var.uri,&#8221;.asp&#8221;)~=nil then<br />
+if ngx.var.args~=nil then<br />
+ngx.req.set_uri(ngx.var.uri..&#8221;?&#8221;..ngx.var.args)</p>
+<p>else<br />
+ngx.req.set_uri(ngx.var.uri)<br />
+end<br />
+end<br />
+&#8216;;</p>
+<p>这样就成功访问了文件名为xxxx.asp?a=zzzz&amp;b=qqqq的静态文件。</p>
+					</div><!-- .entry-content -->
+		
+	
+
+	</article><!-- #post -->
+
+
+
+				<nav class="nav-single">
+					<div class="assistive-text">Post navigation</div>
+					<span class="nav-previous"><a href="http://www.codezhai.com/code/win7-ubuntu%e5%8f%8c%e7%b3%bb%e7%bb%9f%e5%88%a0%e9%99%a4ubuntu%e6%b5%81%e7%a8%8b%e8%ae%b0%e5%bd%95/" rel="prev"><span class="meta-nav">&larr;</span> WIN7-Ubuntu双系统删除Ubuntu流程记录</a></span>
+					<span class="nav-next"></span>
+				</nav><!-- .nav-single -->
+
+				
+<div id="comments" class="comments-area">
+
+	
+	
+									<div id="respond" class="comment-respond">
+				<h3 id="reply-title" class="comment-reply-title">发表评论 <small><a rel="nofollow" id="cancel-comment-reply-link" href="/code/openresty-lua-%e5%85%a8%e7%ab%99%e9%9d%99%e6%80%81%e8%b5%84%e6%ba%90copy-%e6%8a%93%e7%ab%99%e7%a8%8b%e5%ba%8f-%e6%95%b4%e7%ab%99%e6%8a%93%e5%8f%96/#respond" style="display:none;">取消回复</a></small></h3>
+									<form action="http://www.codezhai.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+																			<p class="logged-in-as">以<a href="http://www.codezhai.com/wp-admin/profile.php">Sophymax</a>的身份登录。<a href="http://www.codezhai.com/wp-login.php?action=logout&amp;redirect_to=http%3A%2F%2Fwww.codezhai.com%2Fcode%2Fopenresty-lua-%25e5%2585%25a8%25e7%25ab%2599%25e9%259d%2599%25e6%2580%2581%25e8%25b5%2584%25e6%25ba%2590copy-%25e6%258a%2593%25e7%25ab%2599%25e7%25a8%258b%25e5%25ba%258f-%25e6%2595%25b4%25e7%25ab%2599%25e6%258a%2593%25e5%258f%2596%2F&amp;_wpnonce=5f05c3c30c" title="登出此帐户">登出？</a></p>																			<p class="comment-form-comment"><label for="comment">评论</label> <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>												<p class="form-submit">
+							<input name="submit" type="submit" id="submit" value="发表评论" />
+							<input type='hidden' name='comment_post_ID' value='1022' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+						</p>
+						<input type="hidden" id="_wp_unfiltered_html_comment_disabled" name="_wp_unfiltered_html_comment_disabled" value="502aec8e01" /><script>(function(){if(window===window.parent){document.getElementById('_wp_unfiltered_html_comment_disabled').name='_wp_unfiltered_html_comment';}})();</script>
+					</form>
+							</div><!-- #respond -->
+			
+</div><!-- #comments .comments-area -->
+			
+		</div><!-- #content -->
+	</div><!-- #primary -->
+
+		
+	 		<div id="secondary" class="widget-area" role="complementary">
+						<div class="widget widget_search">
+				<form role="search" method="get" id="searchform" class="searchform" action="http://www.codezhai.com/">
+				<div>
+					<label class="screen-reader-text" for="s">搜索：</label>
+					<input type="text" value="" name="s" id="s" />
+					<input type="submit" id="searchsubmit" value="搜索" />
+				</div>
+			</form>			</div>
+			<div class="widget widget_recent_entries">
+				<p class="widget-title">Recent Posts</p>
+				<ul>	<li><a href='http://www.codezhai.com/code/openresty-lua-%e5%85%a8%e7%ab%99%e9%9d%99%e6%80%81%e8%b5%84%e6%ba%90copy-%e6%8a%93%e7%ab%99%e7%a8%8b%e5%ba%8f-%e6%95%b4%e7%ab%99%e6%8a%93%e5%8f%96/'>openresty使用笔记4:全站静态资源copy的一些事儿</a></li>
+	<li><a href='http://www.codezhai.com/code/win7-ubuntu%e5%8f%8c%e7%b3%bb%e7%bb%9f%e5%88%a0%e9%99%a4ubuntu%e6%b5%81%e7%a8%8b%e8%ae%b0%e5%bd%95/'>WIN7-Ubuntu双系统删除Ubuntu流程记录</a></li>
+	<li><a href='http://www.codezhai.com/tech/%e8%b0%b7%e6%ad%8c-%e7%bd%91%e7%ab%99%e5%8a%a0%e5%af%86-%e6%90%9c%e7%b4%a2%e6%8e%92%e5%90%8d-https/'>谷歌宣布网站加密今后将影响搜索排名</a></li>
+	<li><a href='http://www.codezhai.com/tech/surface-microsoft/'>微软硬件的又一失败？浅谈Surface与它的生命线</a></li>
+	<li><a href='http://www.codezhai.com/code/8x8-font/'>脑补神字体-8×8 ドット日本語フォント「美咲フォント」</a></li>
+</ul>
+			</div>
+			<div class="widget widget_pages">
+			<p class="widget-title">Recommend</p>
+          <ul>
+				<li>
+		<a href="http://www.codezhai.com/code/metaball-cocos2d-shader-cocos2dx/">metaball的cocos2d-x实现：shader实现元球，片段着色器的高效渲染</a>
+		</li>
+		<li>
+		<a href="http://www.codezhai.com/code/%e5%a4%b4%e6%96%87%e4%bb%b6-ios-c-cocos2dx/">OC与C++头文件冲突：iOS下Objective-C与cocos2dx交互的要点</a>
+		</li>
+		<li>
+		<a href="http://www.codezhai.com/code/openresty_ngx-location-capture_at_least_one_subrequest_should_be_specified/">openresty使用笔记3:ngx.location.capture造成的at least one subrequest should be specified错误</a>
+		</li>
+		<li>
+		<a href="http://www.codezhai.com/tech/banned-for-life-google-android/">终生封杀:开发安卓应用的潜在风险,谷歌严厉的处罚政策</a>
+		</li>
+		<li>
+		<a href="http://www.codezhai.com/tech/%E8%85%BE%E8%AE%AF-%E6%8A%84%E8%A2%AD-%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1-%E6%B8%B8%E6%88%8F/">清华一学生毕业设计游戏遭腾讯应用市场抄袭，审核团队监守自盗</a>
+		</li>
+		<li>
+		<a href="http://www.codezhai.com/code/clickjacking-amazon-com/">在Amazon.com发现的一个clickjacking安全漏洞</a>
+		</li>
+		<li>
+		<a href="http://www.codezhai.com/code/google-xss-game-appspot-com-%E8%B0%B7%E6%AD%8Cxss%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95%E6%B8%B8%E6%88%8F%E6%94%BB%E7%95%A5/">Google’s XSS Game:谷歌XSS漏洞测试游戏xss-game.appspot.com攻略</a>
+		</li>
+		<li>
+		<a href="http://www.codezhai.com/code/openresty-%e7%bc%96%e8%af%91-%e5%8a%a8%e6%80%81%e9%93%be%e6%8e%a5%e5%ba%93-mcrypt-lua/">openresty使用笔记2:编写高速加密动态库之libmcrypt的lua插件化</a>
+		</li>
+
+	  </ul>
+      </div>
+	  
+	  <div class="widget widget_tag_cloud">
+       <p class="widget-title">Tag Cloud</p>
+        <a href='http://www.codezhai.com/tag/3d%e6%89%93%e5%8d%b0/' class='tag-link-55' title='5个话题' style='font-size: 10.952380952381px;'>3D打印</a>
+<a href='http://www.codezhai.com/tag/android/' class='tag-link-77' title='14个话题' style='font-size: 15.714285714286px;'>android</a>
+<a href='http://www.codezhai.com/tag/app/' class='tag-link-161' title='31个话题' style='font-size: 19.642857142857px;'>app</a>
+<a href='http://www.codezhai.com/tag/app-store/' class='tag-link-76' title='13个话题' style='font-size: 15.357142857143px;'>app store</a>
+<a href='http://www.codezhai.com/tag/cocos2d/' class='tag-link-119' title='4个话题' style='font-size: 10px;'>cocos2d</a>
+<a href='http://www.codezhai.com/tag/code%e5%ae%85/' class='tag-link-65' title='6个话题' style='font-size: 11.785714285714px;'>code宅</a>
+<a href='http://www.codezhai.com/tag/facebook/' class='tag-link-27' title='6个话题' style='font-size: 11.785714285714px;'>Facebook</a>
+<a href='http://www.codezhai.com/tag/google/' class='tag-link-60' title='29个话题' style='font-size: 19.285714285714px;'>google</a>
+<a href='http://www.codezhai.com/tag/html5/' class='tag-link-182' title='5个话题' style='font-size: 10.952380952381px;'>html5</a>
+<a href='http://www.codezhai.com/tag/ios/' class='tag-link-79' title='16个话题' style='font-size: 16.309523809524px;'>ios</a>
+<a href='http://www.codezhai.com/tag/javascript/' class='tag-link-171' title='6个话题' style='font-size: 11.785714285714px;'>javascript</a>
+<a href='http://www.codezhai.com/tag/nginx/' class='tag-link-23' title='4个话题' style='font-size: 10px;'>nginx</a>
+<a href='http://www.codezhai.com/tag/objective-c/' class='tag-link-118' title='4个话题' style='font-size: 10px;'>Objective-C</a>
+<a href='http://www.codezhai.com/tag/openresty/' class='tag-link-41' title='6个话题' style='font-size: 11.785714285714px;'>openresty</a>
+<a href='http://www.codezhai.com/tag/web%e6%9c%8d%e5%8a%a1%e5%99%a8/' class='tag-link-127' title='24个话题' style='font-size: 18.333333333333px;'>web服务器</a>
+<a href='http://www.codezhai.com/tag/%e4%bc%98%e5%8c%96/' class='tag-link-44' title='21个话题' style='font-size: 17.619047619048px;'>优化</a>
+<a href='http://www.codezhai.com/tag/%e5%8a%a0%e5%af%86/' class='tag-link-45' title='6个话题' style='font-size: 11.785714285714px;'>加密</a>
+<a href='http://www.codezhai.com/tag/%e5%8f%af%e7%a9%bf%e6%88%b4%e8%ae%be%e5%a4%87/' class='tag-link-195' title='14个话题' style='font-size: 15.714285714286px;'>可穿戴设备</a>
+<a href='http://www.codezhai.com/tag/%e5%ae%89%e5%85%a8/' class='tag-link-193' title='19个话题' style='font-size: 17.142857142857px;'>安全</a>
+<a href='http://www.codezhai.com/tag/%e5%bb%ba%e7%ab%99/' class='tag-link-19' title='9个话题' style='font-size: 13.571428571429px;'>建站</a>
+<a href='http://www.codezhai.com/tag/%e5%bc%80%e6%ba%90/' class='tag-link-57' title='13个话题' style='font-size: 15.357142857143px;'>开源</a>
+<a href='http://www.codezhai.com/tag/%e5%bc%80%e6%ba%90%e7%a1%ac%e4%bb%b6/' class='tag-link-110' title='6个话题' style='font-size: 11.785714285714px;'>开源硬件</a>
+<a href='http://www.codezhai.com/tag/%e6%80%a7%e8%83%bd/' class='tag-link-48' title='15个话题' style='font-size: 15.952380952381px;'>性能</a>
+<a href='http://www.codezhai.com/tag/%e6%89%8b%e6%9c%ba/' class='tag-link-28' title='22个话题' style='font-size: 17.857142857143px;'>手机</a>
+<a href='http://www.codezhai.com/tag/%e6%b8%b8%e6%88%8f/' class='tag-link-192' title='10个话题' style='font-size: 14.047619047619px;'>游戏</a>
+<a href='http://www.codezhai.com/tag/%e7%94%a8%e6%88%b7%e4%bd%93%e9%aa%8c/' class='tag-link-188' title='34个话题' style='font-size: 20px;'>用户体验</a>
+<a href='http://www.codezhai.com/tag/%e7%a7%bb%e5%8a%a8%e6%94%af%e4%bb%98/' class='tag-link-49' title='6个话题' style='font-size: 11.785714285714px;'>移动支付</a>
+<a href='http://www.codezhai.com/tag/%e7%ae%97%e6%b3%95/' class='tag-link-196' title='4个话题' style='font-size: 10px;'>算法</a>
+<a href='http://www.codezhai.com/tag/%e8%8b%b9%e6%9e%9c/' class='tag-link-72' title='20个话题' style='font-size: 17.380952380952px;'>苹果</a>
+<a href='http://www.codezhai.com/tag/%e8%b0%b7%e6%ad%8c%e7%9c%bc%e9%95%9c/' class='tag-link-16' title='5个话题' style='font-size: 10.952380952381px;'>谷歌眼镜</a>			</div>
+
+
+
+
+
+		</div><!-- #secondary -->
+		</div><!-- #main .wrapper -->
+	<footer id="colophon" role="contentinfo">
+		<div class="site-info">
+		<div class="footercopy">Code宅</div>
+		<div class="footercredit">Copyright 2014</div>
+		<div class="clear"></div>
+		</div><!-- .site-info -->
+		</footer><!-- #colophon -->
+		<div class="site-wordpress">
+		
+				<!---->
+				</div><!-- .site-info -->
+				<div class="clear"></div>
+</div><!-- #page -->
+
+
+
+
+<script type='text/javascript' src='http://codezhai-static.qiniudn.com/wp-includes/js/admin-bar.min.js?ver=3.9.1'></script>
+<script type='text/javascript' src='http://codezhai-static.qiniudn.com/wp-includes/js/comment-reply.min.js?ver=3.9.1'></script>
+<script type='text/javascript' src='http://codezhai-static.qiniudn.com/wp-content/themes/iconic-one/js/selectnav.js?ver=1.0'></script>
+	<script type="text/javascript">
+		(function() {
+			var request, b = document.body, c = 'className', cs = 'customize-support', rcs = new RegExp('(^|\\s+)(no-)?'+cs+'(\\s+|$)');
+
+			request = true;
+
+			b[c] = b[c].replace( rcs, ' ' );
+			b[c] += ( window.postMessage && request ? ' ' : ' no-' ) + cs;
+		}());
+	</script>
+			<div id="wpadminbar" class="nojq nojs" role="navigation">
+			<a class="screen-reader-shortcut" href="#wp-toolbar" tabindex="1">跳至工具栏</a>
+			<div class="quicklinks" id="wp-toolbar" role="navigation" aria-label="顶部导航工具栏。" tabindex="0">
+				<ul id="wp-admin-bar-root-default" class="ab-top-menu">
+		<li id="wp-admin-bar-site-name" class="menupop"><a class="ab-item"  aria-haspopup="true" href="http://www.codezhai.com/wp-admin/">Code宅</a><div class="ab-sub-wrapper"><ul id="wp-admin-bar-site-name-default" class="ab-submenu">
+		<li id="wp-admin-bar-dashboard"><a class="ab-item"  href="http://www.codezhai.com/wp-admin/">仪表盘</a>		</li></ul><ul id="wp-admin-bar-appearance" class="ab-submenu">
+		<li id="wp-admin-bar-themes"><a class="ab-item"  href="http://www.codezhai.com/wp-admin/themes.php">主题</a>		</li>
+		<li id="wp-admin-bar-customize" class="hide-if-no-customize"><a class="ab-item"  href="http://www.codezhai.com/wp-admin/customize.php?url=http%3A%2F%2Fwww.codezhai.com%2Fcode%2Fopenresty-lua-%25e5%2585%25a8%25e7%25ab%2599%25e9%259d%2599%25e6%2580%2581%25e8%25b5%2584%25e6%25ba%2590copy-%25e6%258a%2593%25e7%25ab%2599%25e7%25a8%258b%25e5%25ba%258f-%25e6%2595%25b4%25e7%25ab%2599%25e6%258a%2593%25e5%258f%2596%2F">自定义</a>		</li>
+		<li id="wp-admin-bar-widgets"><a class="ab-item"  href="http://www.codezhai.com/wp-admin/widgets.php">小工具</a>		</li>
+		<li id="wp-admin-bar-menus"><a class="ab-item"  href="http://www.codezhai.com/wp-admin/nav-menus.php">菜单</a>		</li>
+		<li id="wp-admin-bar-background"><a class="ab-item"  href="http://www.codezhai.com/wp-admin/themes.php?page=custom-background">背景</a>		</li></ul></div>		</li>
+		<li id="wp-admin-bar-comments"><a class="ab-item"  href="http://www.codezhai.com/wp-admin/edit-comments.php" title="0条评论待审"><span class="ab-icon"></span><span id="ab-awaiting-mod" class="ab-label awaiting-mod pending-count count-0">0</span></a>		</li>
+		<li id="wp-admin-bar-new-content" class="menupop"><a class="ab-item"  aria-haspopup="true" href="http://www.codezhai.com/wp-admin/post-new.php" title="添加"><span class="ab-icon"></span><span class="ab-label">新建</span></a><div class="ab-sub-wrapper"><ul id="wp-admin-bar-new-content-default" class="ab-submenu">
+		<li id="wp-admin-bar-new-post"><a class="ab-item"  href="http://www.codezhai.com/wp-admin/post-new.php">文章</a>		</li>
+		<li id="wp-admin-bar-new-media"><a class="ab-item"  href="http://www.codezhai.com/wp-admin/media-new.php">媒体</a>		</li>
+		<li id="wp-admin-bar-new-link"><a class="ab-item"  href="http://www.codezhai.com/wp-admin/link-add.php">链接</a>		</li>
+		<li id="wp-admin-bar-new-page"><a class="ab-item"  href="http://www.codezhai.com/wp-admin/post-new.php?post_type=page">页面</a>		</li>
+		<li id="wp-admin-bar-new-user"><a class="ab-item"  href="http://www.codezhai.com/wp-admin/user-new.php">用户</a>		</li></ul></div>		</li>
+		<li id="wp-admin-bar-edit"><a class="ab-item"  href="http://www.codezhai.com/wp-admin/post.php?post=1022&#038;action=edit">编辑文章</a>		</li></ul><ul id="wp-admin-bar-top-secondary" class="ab-top-secondary ab-top-menu">
+		<li id="wp-admin-bar-my-account" class="menupop with-avatar"><a class="ab-item"  aria-haspopup="true" href="http://www.codezhai.com/wp-admin/profile.php" title="我的帐户">您好，Sophymax<img alt='Sophymax' src='http://codezhai-static.qiniudn.com/wp-content/uploads/2014/05/Sophymax_avatar_1399627438-26x26.jpg' class='avatar avatar-26 photo' height='26' width='26' /></a><div class="ab-sub-wrapper"><ul id="wp-admin-bar-user-actions" class="ab-submenu">
+		<li id="wp-admin-bar-user-info"><a class="ab-item" tabindex="-1" href="http://www.codezhai.com/wp-admin/profile.php"><img alt='Sophymax' src='http://codezhai-static.qiniudn.com/wp-content/uploads/2014/05/Sophymax_avatar_1399627438-64x64.jpg' class='avatar avatar-64 photo' height='64' width='64' /><span class='display-name'>Sophymax</span><span class='username'>sophymax</span></a>		</li>
+		<li id="wp-admin-bar-edit-profile"><a class="ab-item"  href="http://www.codezhai.com/wp-admin/profile.php">编辑我的个人资料</a>		</li>
+		<li id="wp-admin-bar-logout"><a class="ab-item"  href="http://www.codezhai.com/wp-login.php?action=logout&#038;_wpnonce=5f05c3c30c">登出</a>		</li></ul></div>		</li></ul>			</div>
+						<a class="screen-reader-shortcut" href="http://www.codezhai.com/wp-login.php?action=logout&#038;_wpnonce=5f05c3c30c">登出</a>
+					</div>
+
+		<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fa684300c049024fc67e8bf49272e2b54' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<!--<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-51483873-1', 'codezhai.com');
+  ga('send', 'pageview');
+
+</script>-->
+</body>
+</html>
+
+<!-- Dynamic page generated in 0.235 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2014-08-11 07:45:53 -->

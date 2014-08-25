@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8" />
+<meta name="description" content="ACG宅-蠢萌的游戏动漫搜索引擎" />
+<meta name="keywords" content="ACG宅,动漫,游戏,搜索引擎,动画,漫画,死宅,ACG文化,LOL,V家,东方,二次元,作死 ,喵星人,漫友,新番,鬼畜,小苹果,萌,初音" />
+<title>ACG宅-蠢萌的游戏动漫搜索引擎</title>
+</head>
+<body>
+<div style="width:500px;margin-left: auto; margin-right: auto;text-align:center; padding-top:120px;">
+<img src="logo.png"  title="废了好大劲才搬来acgzhai的alpha版,好累,好饿"\>
+<div style="margin-top:20px">
+<input type=text style="width:100%;height:25px;" id="box">
+<div style="padding-top:10px;">
+<img src="btn-ac.png" style="width:0px;height:0px;">
+<div id="submit" style="margin-left: auto; margin-right: auto;background:url('btn.png') no-repeat;width:144px;height:46px;cursor:pointer;" onmouseover="over();" onmouseout="out();" onclick="search('mouse');">
+</div>
+</div>
+</div>
+<div style="height:1px;position:fixed;bottom:0px;font-size:1px;">
+ACG宅-蠢萌的游戏动漫搜索引擎，全球最大的ACG搜索引擎，今天没吃小苹果，感觉自己萌萌哒
+<a href='sitemap.html'>热搜动漫新番</a>
+<a href='sitemap2.html'>热搜萌宅用语</a>
+</div>
+<script>
+document.getElementById("box").focus();
+document.onkeydown=search;
+function over(){
+	document.getElementById("submit").style="margin-left: auto; margin-right: auto;background:url('btn-ac.png') no-repeat;width:144px;height:46px;cursor:pointer;";
+}
+function out(){
+	document.getElementById("submit").style="margin-left: auto; margin-right: auto;background:url('btn.png') no-repeat;width:144px;height:46px;cursor:pointer;";
+}
+function search(event){
+	var e = event ? event :(window.event ? window.event : null); 
+        if((event=='mouse')||(e&&e.keyCode==13)){ 
+ 	window.location.href="http://www.acgzhai.net/select?q="+document.getElementById("box").value; 
+	}
+}
+</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?6611821b005e2fca37699d37e831c22e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</body>
+</html>
